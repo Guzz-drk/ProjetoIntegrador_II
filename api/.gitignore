@@ -1,0 +1,44 @@
+# Extensões
+*.tgz
+*.apk
+*.aar
+*.ap_
+*.aab
+*.dex
+*.class
+*.war
+*.ear
+#*.zip
+*.tar.gz
+*.rar
+*.pid
+*.seed
+*.pid.lock
+#.env
+#.env.test
+.env.production
+#Python
+venv
+# build / generate output
+dist
+# Android / java Built application
+files
+.gradle/
+build/
+bin/
+gen/
+out/
+build/Release
+jspm_packages/
+# Node ignore
+node_modules/
+#LOGS
+logs
+*.log
+npm-debug.log*
+.npm
+.cache/
+# Logs
+logs
+*.log
+npm-debug.log*
