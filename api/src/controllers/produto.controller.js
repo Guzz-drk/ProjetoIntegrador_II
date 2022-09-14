@@ -1,6 +1,5 @@
 const db = require("../config/database");
-
-// Método responsável por criar um novo Produto
+// Método responsável por criar um novo Produto, e validação de campo vazio
 
 exports.createProduto = async (req, res) => {
   const { descricao, quantidade, valorCompra, valorVenda, categoria } =

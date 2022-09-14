@@ -1,20 +1,34 @@
 const db = require("../config/database");
-
-// Método responsável por criar um novo Cliente
+const ValidaCampoVazio = require("../validation/ValidaCampoVazio");
+// Método responsável por criar um novo Cliente, e validação de campo
 
 exports.createCliente = async (req, res) => {
-  const { nome, telefone, cpf, email } = req.body;
-  const { rows } = await db.query(
-    "INSERT INTO cliente (nome, telefone, cpf, email) VALUES ($1, $2, $3, $4)",
-    [nome, telefone, cpf, email]
-  );
+  const { atrnome, atrtelefone, atremail} = req.body;
 
-  res.status(201).send({
-    message: "Cliente Adicionado Com Sucesso!",
-    body: {
-      cliente: { nome, telefone, cpf, email },
-    },
-  });
+  const valida = ValidaCampoVazio([
+    { atr: "nome", value: atrnome },
+    { atr: "telefone", value: atrtelefone },
+    { atr: "email", value: atremail },
+  ]);
+
+  if (valida) {
+    res.status(500).send({
+      msg: valida,
+    });
+  } else {
+    const { nome, telefone, cpf, email } = req.body;
+    const { rows } = await db.query(
+      "INSERT INTO cliente (nome, telefone, cpf, email) VALUES ($1, $2, $3, $4)",
+      [nome, telefone, cpf, email]
+    );
+
+    res.status(201).send({
+      message: "Cliente Adicionado Com Sucesso!",
+      body: {
+        cliente: { nome, telefone, cpf, email },
+      },
+    });
+  }
 };
 
 // Método responsável por listar todos os Clientes
@@ -33,17 +47,17 @@ exports.findClienteById = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
-// Método responsável por atualizar um cliente pelo id
+// Método responsável por atualizar um cliente pelo id, e validação de campos
 exports.updateClienteById = async (req, res) => {
-  const clienteId = parseInt(req.params.id);
-  const { nome, telefone, cpf, email } = req.body;
+    const clienteId = parseInt(req.params.id);
+    const { nome, telefone, cpf, email } = req.body;
 
-  const response = await db.query(
-    "UPDATE cliente SET nome = $1, telefone = $2, cpf = $3, email = $4 WHERE idCliente = $5",
-    [nome, telefone, cpf, email, clienteId]
-  );
+    const response = await db.query(
+      "UPDATE cliente SET nome = $1, telefone = $2, cpf = $3, email = $4 WHERE idCliente = $5",
+      [nome, telefone, cpf, email, clienteId]
+    );
 
-  res.status(200).send({ message: "Cliente Atualizado Com Sucesso!" });
+    res.status(200).send({ message: "Cliente Atualizado Com Sucesso!" });
 };
 
 // Método responsável por excluir um cliente pelo id
