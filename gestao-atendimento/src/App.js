@@ -1,23 +1,24 @@
-// import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-// import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-// // function App() {
-// //   return (
-// //     // <Router>
-// //     //   <Navbar />
-// //     //     <Container customClass="min-height">
-// //     //       <Routes>
-// //     //       <Route path="/" element={<Home/>}/>
-// //     //       <Route path="/agenda" element={<Agenda/>}/>
-// //     //       {/* <Route exact path="/marcarAgendamento">
-// //     //         <MarcarAgendamento/>
-// //     //       </Route> */}
-// //     //       <Route path="/servico" element={<Servico/>}/>
-// //     //       </Routes>
-// //     //     </Container>
-// //     //   <Footer />
-// //     // </Router>
-// //   // );
-// // }
+import Container from "./components/layout/Container";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Home from "./pages/home/Home";
+import Cliente from "./pages/cliente/Cliente";
 
-// export default App;
+function App() {
+  return (
+    <Router>
+      <Navbar />
+      <Container customClass="min-height">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cliente" element={<Cliente />} />
+        </Routes>
+      </Container>
+      <Footer />
+    </Router>
+  );
+}
+
+export default App;
