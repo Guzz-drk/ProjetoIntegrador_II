@@ -1,5 +1,5 @@
-<h2>Nome: Gustavo Pandolpho</h2>
-<h4>Matricula: 182740</h4> 
+# Nome: Gustavo Pandolpho
+## Matricula: 182740 
 
 <h6>Projeto:<h6>
 <p>O projeto consiste em desenvolver uma aplicação para gerenciar atendimentos de barbearias,
