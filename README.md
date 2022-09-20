@@ -8,5 +8,5 @@ as tecnologias utilizadas são, para o front-end, React e para o back-end, NodeJ
 <p>Link para acesso dos documentos no Google Drive, acesso permitido apenas para professores.
 https://drive.google.com/drive/folders/1igDrisXqdw_wPqUN851LFQ7ibdIGZKX7?usp=sharing</p>
 
-<img src="C:\Users\User\Documents\PI-2 Documentos\Documentos_Diagramas_img\DiagramaDeClassePI2V2.png" style="height: 100px; width:100px;"/>
+<img src="./gestao-atendimento/src/components/markdown/DiagramaDeClasse.png" style="height: 500px; width:500px;"/>
 
