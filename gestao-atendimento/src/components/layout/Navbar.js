@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 import Container from "./Container";
 
-import styles from "./Navbar.module.css";
+import styles from "../css/Navbar.module.css";
 
-import logo from "../img/logo.png";
+import logo from "../img/barber-shop.png";
 function Navbar() {
   return (
     <nav className={styles.navbar}>

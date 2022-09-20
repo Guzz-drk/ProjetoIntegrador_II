@@ -1,4 +1,4 @@
-import styles from '../../components/css/home/Home.module.css'
+import styles from '../../components/css/Home.module.css'
 import agend from '../../components/img/web.svg'
 
 function Home(){
