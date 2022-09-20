@@ -1,5 +1,6 @@
--- Matricula: 182740 
--- Nome: Gustavo Pandolpho --
+<h2>Matricula: 182740</h2> 
+===============================
+<h2>Nome: Gustavo Pandolpho</h2>
 
 -- Projeto:
 O projeto consiste em desenvolver uma aplicação para gerenciar atendimentos de barbearias,
