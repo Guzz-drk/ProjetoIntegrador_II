@@ -1,21 +1,7 @@
 const db = require("../config/database");
-const ValidaCampoVazio = require("../validation/ValidaCampoVazio");
 // Método responsável por criar um novo Cliente, e validação de campo
 
 exports.createCliente = async (req, res) => {
-  const { atrnome, atrtelefone, atremail} = req.body;
-
-  const valida = ValidaCampoVazio([
-    { atr: "nome", value: atrnome },
-    { atr: "telefone", value: atrtelefone },
-    { atr: "email", value: atremail },
-  ]);
-
-  if (valida) {
-    res.status(500).send({
-      msg: valida,
-    });
-  } else {
     const { nome, telefone, cpf, email } = req.body;
     const { rows } = await db.query(
       "INSERT INTO cliente (nome, telefone, cpf, email) VALUES ($1, $2, $3, $4)",
@@ -28,7 +14,6 @@ exports.createCliente = async (req, res) => {
         cliente: { nome, telefone, cpf, email },
       },
     });
-  }
 };
 
 // Método responsável por listar todos os Clientes
