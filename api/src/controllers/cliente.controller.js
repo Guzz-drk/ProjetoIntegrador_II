@@ -32,7 +32,7 @@ exports.findClienteById = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
-// Método responsável por atualizar um cliente pelo id, e validação de campos
+// Método responsável por atualizar um cliente pelo id
 exports.updateClienteById = async (req, res) => {
     const clienteId = parseInt(req.params.id);
     const { nome, telefone, cpf, email } = req.body;

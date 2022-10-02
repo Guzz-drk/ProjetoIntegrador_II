@@ -2,7 +2,8 @@ import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
-import { Button } from 'primereact/button';
+import { Button } from "primereact/button";
+import estilo from "../../components/css/List.module.css";
 
 const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
@@ -53,32 +54,46 @@ const ClienteList = (props) => {
           type="button"
           icon="pi pi-pencil"
           className="p-button-rounded p-button-text"
-          onClick={() => props.editar(rowData._id)}>
-        </Button>
+          onClick={() => props.editar(rowData.idcliente)}
+        ></Button>
         <Button
-          type="button" 
+          type="button"
           icon="pi pi-trash"
           className="p-button-rounded p-button-text"
-          onClick={() => props.excluir(rowData._id)}>
-        </Button>
+          onClick={() => props.excluir(rowData.idcliente)}
+        ></Button>
       </React.Fragment>
     );
   };
   return (
     <div>
-      <div>
-        <h4 style={{textAlign:'center'}}>Lista de Clientes</h4>
-        <Button type="button" icon="pi pi-sync" style={{marginLeft: "47%"}} className="p-button-rounded p-button-text"
-          onClick={props.onClickAtualizar}>
-        </Button>
-        <Button type="button" icon="pi pi-plus" className="p-button-rounded p-button-text"
-          onClick={props.inserir}>
-        </Button>
+      <div className={estilo.div}>
+        <h4 className={estilo.h4}>Lista de Clientes</h4>
+        <Button
+          type="button"
+          icon="pi pi-sync"
+          style={{marginLeft: "45%"}}
+          className="p-button-rounded p-button-text"
+          onClick={props.onClickAtualizar}
+        ></Button>
+        <Button
+          type="button"
+          icon="pi pi-plus"
+          className="p-button-rounded p-button-text"
+          onClick={props.inserir}
+        ></Button>
         <div className="card">
-          <DataTable value={props.clientes} selectionMode="single" responsiveLayout="scroll"
-            paginator paginatorTemplate={template2} rows={5} paginatorClassName="justify-content-center"
-            className="mt-6">
-            <Column field="idCliente" header="ID" sortable></Column>
+          <DataTable
+            value={props.clientes}
+            selectionMode="single"
+            responsiveLayout="scroll"
+            paginator
+            paginatorTemplate={template2}
+            rows={5}
+            paginatorClassName="justify-content-center"
+            className="mt-6"
+          >
+            <Column field="idcliente" header="ID" sortable></Column>
             <Column field="nome" header="Nome" sortable filter></Column>
             <Column field="email" header="Email" sortable filter></Column>
             <Column field="telefone" header="Telefone" sortable filter></Column>

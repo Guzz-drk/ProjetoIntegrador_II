@@ -62,7 +62,7 @@ function Cliente() {
           toastRef.current.show({severity: "error",summary: e.message, life: 1000,});
       });
     } else {// alteração 
-      ClienteSrv.alterar(cliente).then((response) => {setEditando(true); onClickAtualizar();
+      ClienteSrv.alterar(cliente).then((response) => {setEditando(false); onClickAtualizar();
           toastRef.current.show({severity: "success",summary: "Salvou",life: 1000,});
         })
         .catch((e) => {toastRef.current.show({severity: "error",summary: e.message,life: 1000,});
@@ -72,12 +72,14 @@ function Cliente() {
   const cancelar = () => {
     setEditando(false);
   };
-  const editar = (idcliente) => {
-    setCliente(clientes.filter((cliente) => cliente.idcliente === idcliente)[0]);
+  
+
+  const editar = (id) => {
+    setCliente(clientes.filter((cliente) => cliente.idcliente === id)[0]);
     setEditando(true);
   };
   
-  const excluir = (idcliente) => {
+  const excluir = (id) => {
     confirmDialog({
       message: "Confirma a exclusão?",
       header: "Confirmação",
@@ -85,11 +87,11 @@ function Cliente() {
       acceptLabel: "Sim",
       rejectLabel: "Não",
       acceptClassName: "p-button-danger",
-      accept: () => excluirConfirm(idcliente),
+      accept: () => excluirConfirm(id),
     });
   };
-  const excluirConfirm = (idcliente) => {
-    ClienteSrv.excluir(idcliente).then((response) => {onClickAtualizar();
+  const excluirConfirm = (id) => {
+    ClienteSrv.excluir(id).then((response) => {onClickAtualizar();
         toastRef.current.show({severity: "success", summary: "Excluído", life: 1000});
       })
       .catch((e) => {toastRef.current.show({severity: "error", summary: e.message, life: 1000});
@@ -97,7 +99,7 @@ function Cliente() {
   };
   if (!editando) {
     return (
-      <div className="App">
+      <div>
         <ConfirmDialog />
         <ClienteList
           clientes={clientes}
@@ -106,17 +108,19 @@ function Cliente() {
           editar={editar}
           excluir={excluir}
         />
+        <Toast ref={toastRef} />
       </div>
     );
   } else {
     return (
-      <div className="App">
+      <div>
         <ClienteForm
           cliente={cliente}
           setCliente={setCliente}
           salvar={salvar}
           cancelar={cancelar}
         />
+        <Toast ref={toastRef} />
       </div>
     );
   }

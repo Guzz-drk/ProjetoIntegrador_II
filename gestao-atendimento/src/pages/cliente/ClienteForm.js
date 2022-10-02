@@ -2,6 +2,7 @@ import React from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
+import estilo from "../../components/css/Form.module.css";
 
 const ClienteForm = (props) => {
   const handleInputChange = (event) => {
@@ -18,10 +19,10 @@ const ClienteForm = (props) => {
   const onSubmit = (data) => {};
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div style={{ padding: 15 }}>
+    <form onSubmit={handleSubmit(onSubmit)} className={estilo.div}>
+      <div>
         <div className="card">
-          <h5 style={{ textAlign: "center" }}>Cadastro de Clientes</h5>
+          <h5 className={estilo.top}>Cadastro de Clientes</h5>
           <div
             className="container"
             style={{ marginLeft: "38%", textAlign: "center" }}
@@ -114,7 +115,7 @@ const ClienteForm = (props) => {
               </div>
             </div>
           </div>
-          <div style={{ marginLeft: "32em" }}>
+          <div className={estilo.botao}>
             <Button
               type="submit"
               icon="pi pi-save"
