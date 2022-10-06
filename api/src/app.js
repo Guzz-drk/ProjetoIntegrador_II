@@ -19,13 +19,13 @@ app.use(express.json({ type: "application/vnd.api+json" }));
 
 
 app.use(index);
-app.use("/api/", clienteRoute);
-app.use("/api/", funcionarioRoute);
-app.use("/api/", tipoProdutoRoute);
-app.use("/api/", tipoServicoRoute);
-app.use("/api/", produtoRoute);
-app.use("/api/", servicoRoute);
-app.use("/api/", atendimentoRoute);
-app.use("/api/", atendimentoProdutoRoute);
+app.use("/api", clienteRoute);
+app.use("/api", funcionarioRoute);
+app.use("/api", tipoProdutoRoute);
+app.use("/api", tipoServicoRoute);
+app.use("/api", produtoRoute);
+app.use("/api", servicoRoute);
+app.use("/api", atendimentoRoute);
+app.use("/api", atendimentoProdutoRoute);
 
 module.exports = app;
