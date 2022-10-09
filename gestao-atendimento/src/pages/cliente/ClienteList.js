@@ -4,7 +4,6 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import estilo from "../../components/css/List.module.css";
-
 const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
   RowsPerPageDropdown: (options) => {
@@ -72,7 +71,7 @@ const ClienteList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{marginLeft: "45%"}}
+          style={{ marginLeft: "45%" }}
           className="p-button-rounded p-button-text"
           onClick={props.onClickAtualizar}
         ></Button>

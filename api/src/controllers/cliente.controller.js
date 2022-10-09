@@ -2,18 +2,18 @@ const db = require("../config/database");
 // Método responsável por criar um novo Cliente, e validação de campo
 
 exports.createCliente = async (req, res) => {
-    const { nome, telefone, cpf, email } = req.body;
-    const { rows } = await db.query(
-      "INSERT INTO cliente (nome, telefone, cpf, email) VALUES ($1, $2, $3, $4)",
-      [nome, telefone, cpf, email]
-    );
+  const { nome, telefone, cpf, email } = req.body;
+  const { rows } = await db.query(
+    "INSERT INTO cliente (nome, telefone, cpf, email) VALUES ($1, $2, $3, $4)",
+    [nome, telefone, cpf, email]
+  );
 
-    res.status(201).send({
-      message: "Cliente Adicionado Com Sucesso!",
-      body: {
-        cliente: { nome, telefone, cpf, email },
-      },
-    });
+  res.status(201).send({
+    message: "Cliente Adicionado Com Sucesso!",
+    body: {
+      cliente: { nome, telefone, cpf, email },
+    },
+  });
 };
 
 // Método responsável por listar todos os Clientes
@@ -34,15 +34,15 @@ exports.findClienteById = async (req, res) => {
 
 // Método responsável por atualizar um cliente pelo id
 exports.updateClienteById = async (req, res) => {
-    const clienteId = parseInt(req.params.id);
-    const { nome, telefone, cpf, email } = req.body;
+  const clienteId = parseInt(req.params.id);
+  const { nome, telefone, cpf, email } = req.body;
 
-    const response = await db.query(
-      "UPDATE cliente SET nome = $1, telefone = $2, cpf = $3, email = $4 WHERE idCliente = $5",
-      [nome, telefone, cpf, email, clienteId]
-    );
+  const response = await db.query(
+    "UPDATE cliente SET nome = $1, telefone = $2, cpf = $3, email = $4 WHERE idCliente = $5",
+    [nome, telefone, cpf, email, clienteId]
+  );
 
-    res.status(200).send({ message: "Cliente Atualizado Com Sucesso!" });
+  res.status(200).send({ message: "Cliente Atualizado Com Sucesso!" });
 };
 
 // Método responsável por excluir um cliente pelo id

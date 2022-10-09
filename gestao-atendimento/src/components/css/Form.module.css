@@ -1,11 +1,24 @@
-.div{
-    margin-top: 15px;
-    margin-left: 13em;
-    margin-bottom: 15px;
+.div {
+    margin: auto;
+    align-items: center;
+    margin-left: 17em;
 }
 
-.top{
+.top {
+    margin: auto;
     margin-top: 15px;
     text-align: center;
+    font-size: x-large;
+}
+
+.botao {
     margin-left: 25px;
+}
+
+.margemtopo {
+    margin-top: 4em;
+}
+
+.margemcampo {
+    margin-top: 1.5em;
 }

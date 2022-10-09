@@ -11,11 +11,10 @@ import "primeicons/primeicons.css";
 import { Toast } from "primereact/toast";
 import { confirmDialog, ConfirmDialog } from "primereact/confirmdialog";
 
-
 function Cliente() {
   const toastRef = useRef();
   <Toast ref={toastRef} />;
-  
+
   const [clientes, setClientes] = useState([]);
   useEffect(() => {
     onClickAtualizar();
@@ -39,103 +38,113 @@ function Cliente() {
         });
       });
   };
-  const [cliente, setCliente] = useState(initialState);
+
   // operação inserir
   const initialState = {
-    idcliente: cliente.idcliente,
-    nome: cliente.nome,
-    telefone: cliente.telefone,
-    cpf: cliente.cpf,
-    email: cliente.email
+    idcliente: null,
+    nome: "",
+    telefone: "",
+    cpf: "",
+    email: "",
   };
-  
+  const [cliente, setCliente] = useState(initialState);
   const [editando, setEditando] = useState(false);
   const inserir = () => {
     setCliente(initialState);
     setEditando(true);
   };
 
-//metodo para salvar e editar cliente
+  //metodo para salvar e editar cliente
   const salvar = () => {
-    if(cliente.idcliente === null){
-    ClienteSrv.incluir(cliente)
-      .then((response) => {
-        setCliente({
-          idcliente: response.idcliente,
-          nome: response.nome,
-          telefone: response.telefone,
-          cpf: response.cpf,
-          email: response.email,
+    if (cliente.idcliente == null) {
+      //inclusão
+      ClienteSrv.incluir(cliente)
+        .then((response) => {
+          setEditando(false);
+          onClickAtualizar();
+          toastRef.current.show({
+            severity: "success",
+            summary: "Salvou",
+            life: 2000,
+          });
+        })
+        .catch((e) => {
+          toastRef.current.show({
+            severity: "error",
+            summary: e.message,
+            life: 4000,
+          });
         });
-        setEditando(false);
-        onClickAtualizar();
-        toastRef.current.show({
-          severity: "success",
-          summary: "Cliente Salvo",
-          life: 1000,
-        });
-      })
-      .catch((e) => {
-        toastRef.current.show({
-          severity: "error",
-          summary: e.message,
-          life: 1000,
-        });
-      });
-    }else{
+    } else {
+      // alteração
       ClienteSrv.alterar(cliente)
-      .then((response) => {
-        setCliente({
-          idcliente: response.idcliente,
-          nome: response.nome,
-          telefone: response.telefone,
-          cpf: response.cpf,
-          email: response.email,
+        .then((response) => {
+          setEditando(false);
+          onClickAtualizar();
+          toastRef.current.show({
+            severity: "success",
+            summary: "Salvou",
+            life: 2000,
+          });
+        })
+        .catch((e) => {
+          toastRef.current.show({
+            severity: "error",
+            summary: e.message,
+            life: 4000,
+          });
         });
-        setEditando(false);
-        onClickAtualizar();
-        toastRef.current.show({
-          severity: "success",
-          summary: "Cliente Alterado",
-          life: 1000,
-        });
-      })
-      .catch((e) => {
-        toastRef.current.show({
-          severity: "error",
-          summary: e.message,
-          life: 1000,
-        });
-      });
     }
   };
-
   // const salvar = () => {
   //   if (cliente.idcliente == null) {
-  //     ClienteSrv.incluir(cliente).then((response) => {
-  //       setEditando(false); onClickAtualizar(); 
-  //       toastRef.current.show({severity: "success", summary: "Salvou", life: 1000,});
-  //       }).catch((e) => {
-  //         toastRef.current.show({severity: "error",summary: e.message, life: 1000,});
-  //     });
-  //   } else {// alteração 
-  //     ClienteSrv.alterar(cliente).then((response) => {setEditando(false); onClickAtualizar();
-  //         toastRef.current.show({severity: "success",summary: "Salvou",life: 1000,});
+  //     ClienteSrv.incluir(cliente)
+  //       .then((response) => {
+  //         setEditando(false);
+  //         onClickAtualizar();
+  //         toastRef.current.show({
+  //           severity: "success",
+  //           summary: "Salvou",
+  //           life: 1000,
+  //         });
   //       })
-  //       .catch((e) => {toastRef.current.show({severity: "error",summary: e.message,life: 1000,});
+  //       .catch((e) => {
+  //         toastRef.current.show({
+  //           severity: "error",
+  //           summary: e.message,
+  //           life: 1000,
+  //         });
+  //       });
+  //   } else {
+  //     // alteração
+  //     ClienteSrv.alterar(cliente)
+  //       .then((response) => {
+  //         setEditando(false);
+  //         onClickAtualizar();
+  //         toastRef.current.show({
+  //           severity: "success",
+  //           summary: "Salvou",
+  //           life: 1000,
+  //         });
+  //       })
+  //       .catch((e) => {
+  //         toastRef.current.show({
+  //           severity: "error",
+  //           summary: e.message,
+  //           life: 1000,
+  //         });
   //       });
   //   }
   // };
   const cancelar = () => {
     setEditando(false);
   };
-  
 
   const editar = (id) => {
     setCliente(clientes.filter((cliente) => cliente.idcliente === id)[0]);
     setEditando(true);
   };
-  
+
   const excluir = (id) => {
     confirmDialog({
       message: "Confirma a exclusão?",
@@ -148,10 +157,21 @@ function Cliente() {
     });
   };
   const excluirConfirm = (id) => {
-    ClienteSrv.excluir(id).then((response) => {onClickAtualizar();
-        toastRef.current.show({severity: "success", summary: "Excluído", life: 1000});
+    ClienteSrv.excluir(id)
+      .then((response) => {
+        onClickAtualizar();
+        toastRef.current.show({
+          severity: "success",
+          summary: "Excluído",
+          life: 1000,
+        });
       })
-      .catch((e) => {toastRef.current.show({severity: "error", summary: e.message, life: 1000});
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
       });
   };
   if (!editando) {
