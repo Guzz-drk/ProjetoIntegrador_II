@@ -1,16 +1,26 @@
-.h4{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+.h4 {
     margin-top: 10px;
     text-align: center;
     font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.div{
+.div {
     margin-left: 10em;
     margin-bottom: 15px;
 }
 
-.botao{
+.botao {
     margin-left: 10em;
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }

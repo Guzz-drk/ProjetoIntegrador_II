@@ -12,8 +12,8 @@ class ClienteSrv {
       throw err;
     });
   }
-  async alterar(id) {
-    return await axios.put(this.url, `${id}`).catch((err) => {
+  async alterar(data) {
+    return await axios.put(this.url, data).catch((err) => {
       throw err;
     });
   }

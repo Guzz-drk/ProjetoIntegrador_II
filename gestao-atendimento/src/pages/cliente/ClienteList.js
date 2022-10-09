@@ -66,7 +66,7 @@ const ClienteList = (props) => {
     );
   };
   return (
-    <div>
+    <div className={estilo.main}>
       <div className={estilo.div}>
         <h4 className={estilo.h4}>Lista de Clientes</h4>
         <Button

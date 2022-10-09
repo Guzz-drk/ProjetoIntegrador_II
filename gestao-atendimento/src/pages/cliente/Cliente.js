@@ -39,36 +39,93 @@ function Cliente() {
         });
       });
   };
+  const [cliente, setCliente] = useState(initialState);
   // operação inserir
   const initialState = {
-    idcliente: null,
-    nome: "",
-    telefone: "",
-    cpf: "",
-    email: "",
+    idcliente: cliente.idcliente,
+    nome: cliente.nome,
+    telefone: cliente.telefone,
+    cpf: cliente.cpf,
+    email: cliente.email
   };
-  const [cliente, setCliente] = useState(initialState);
+  
   const [editando, setEditando] = useState(false);
   const inserir = () => {
     setCliente(initialState);
     setEditando(true);
   };
+
+//metodo para salvar e editar cliente
   const salvar = () => {
-    if (cliente.idcliente == null) {
-      ClienteSrv.incluir(cliente).then((response) => {
-        setEditando(false); onClickAtualizar(); 
-        toastRef.current.show({severity: "success", summary: "Salvou", life: 1000,});
-        }).catch((e) => {
-          toastRef.current.show({severity: "error",summary: e.message, life: 1000,});
-      });
-    } else {// alteração 
-      ClienteSrv.alterar(cliente).then((response) => {setEditando(false); onClickAtualizar();
-          toastRef.current.show({severity: "success",summary: "Salvou",life: 1000,});
-        })
-        .catch((e) => {toastRef.current.show({severity: "error",summary: e.message,life: 1000,});
+    if(cliente.idcliente === null){
+    ClienteSrv.incluir(cliente)
+      .then((response) => {
+        setCliente({
+          idcliente: response.idcliente,
+          nome: response.nome,
+          telefone: response.telefone,
+          cpf: response.cpf,
+          email: response.email,
         });
+        setEditando(false);
+        onClickAtualizar();
+        toastRef.current.show({
+          severity: "success",
+          summary: "Cliente Salvo",
+          life: 1000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
+      });
+    }else{
+      ClienteSrv.alterar(cliente)
+      .then((response) => {
+        setCliente({
+          idcliente: response.idcliente,
+          nome: response.nome,
+          telefone: response.telefone,
+          cpf: response.cpf,
+          email: response.email,
+        });
+        setEditando(false);
+        onClickAtualizar();
+        toastRef.current.show({
+          severity: "success",
+          summary: "Cliente Alterado",
+          life: 1000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
+      });
     }
   };
+
+  // const salvar = () => {
+  //   if (cliente.idcliente == null) {
+  //     ClienteSrv.incluir(cliente).then((response) => {
+  //       setEditando(false); onClickAtualizar(); 
+  //       toastRef.current.show({severity: "success", summary: "Salvou", life: 1000,});
+  //       }).catch((e) => {
+  //         toastRef.current.show({severity: "error",summary: e.message, life: 1000,});
+  //     });
+  //   } else {// alteração 
+  //     ClienteSrv.alterar(cliente).then((response) => {setEditando(false); onClickAtualizar();
+  //         toastRef.current.show({severity: "success",summary: "Salvou",life: 1000,});
+  //       })
+  //       .catch((e) => {toastRef.current.show({severity: "error",summary: e.message,life: 1000,});
+  //       });
+  //   }
+  // };
   const cancelar = () => {
     setEditando(false);
   };
