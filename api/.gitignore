@@ -14,7 +14,7 @@
 *.pid
 *.seed
 *.pid.lock
-#.env
+.env
 #.env.test
 .env.production
 #Python

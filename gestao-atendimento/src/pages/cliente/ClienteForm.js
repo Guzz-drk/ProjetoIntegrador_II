@@ -1,6 +1,6 @@
 import React from "react";
 import { InputText } from "primereact/inputtext";
-import { InputMask } from "primereact/inputmask";
+// import { InputMask } from "primereact/inputmask";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import estilo from "../../components/css/Form.module.css";
@@ -94,7 +94,29 @@ const ClienteForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="cpf">
                       CPF
                     </label>
-                    <InputMask
+                    <InputText
+                      name="cpf"
+                      {...register("cpf", {
+                        required: {
+                          value: true,
+                          message: "O cpf é obrigatório!",
+                        },
+                        maxLength: {
+                          value: 100,
+                          message: "O cpf pode ter no máximo 100 caracteres!",
+                        },
+                        minLength: {
+                          value: 10,
+                          message: "O cpf deve ter no mínimo 10 caracteres!",
+                        },
+                      })}
+                      defaultValue={props.cliente.cpf}
+                      onChange={handleInputChange}
+                    />
+                    {errors.cpf && (
+                      <span style={{ color: "red" }}>{errors.cpf.message}</span>
+                    )}
+                    {/* <InputMask
                       name="cpf"
                       defaultValue={props.cliente.cpf}
                       onChange={handleInputChange}
@@ -102,7 +124,7 @@ const ClienteForm = (props) => {
                     />
                     {errors.cpf && (
                       <span style={{ color: "red" }}>{errors.cpf.message}</span>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>
@@ -112,7 +134,33 @@ const ClienteForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="telefone">
                       Telefone
                     </label>
-                    <InputMask
+                    <InputText
+                      name="telefone"
+                      {...register("telefone", {
+                        required: {
+                          value: true,
+                          message: "O telefone é obrigatório!",
+                        },
+                        maxLength: {
+                          value: 100,
+                          message:
+                            "O telefone pode ter no máximo 100 caracteres!",
+                        },
+                        minLength: {
+                          value: 10,
+                          message:
+                            "O telefone deve ter no mínimo 10 caracteres!",
+                        },
+                      })}
+                      defaultValue={props.cliente.telefone}
+                      onChange={handleInputChange}
+                    />
+                    {errors.telefone && (
+                      <span style={{ color: "red" }}>
+                        {errors.telefone.message}
+                      </span>
+                    )}
+                    {/* <InputMask
                       name="telefone"
                       defaultValue={props.cliente.telefone}
                       onChange={handleInputChange}
@@ -122,7 +170,7 @@ const ClienteForm = (props) => {
                       <span style={{ color: "red" }}>
                         {errors.telefone.message}
                       </span>
-                    )}
+                    )} */}
                   </div>
                 </div>
               </div>

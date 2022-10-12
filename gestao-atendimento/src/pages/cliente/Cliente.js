@@ -140,8 +140,10 @@ function Cliente() {
     setEditando(false);
   };
 
-  const editar = (id) => {
-    setCliente(clientes.filter((cliente) => cliente.idcliente === id)[0]);
+  const editar = (idcliente) => {
+    setCliente(
+      clientes.filter((cliente) => cliente.idcliente === idcliente)[0]
+    );
     setEditando(true);
   };
 
