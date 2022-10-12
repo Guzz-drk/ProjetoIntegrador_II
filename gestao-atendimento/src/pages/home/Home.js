@@ -7,7 +7,7 @@ function Home() {
         Bem-Vindo ao<span>CleanCut</span>
       </h1>
       <p>Gerencie sua Agenda</p>
-      <img src={agend} alt="CleanCut"></img>
+      <img src={agend} alt="CleanCut" className={styles.home_container}></img>
     </section>
   );
 }

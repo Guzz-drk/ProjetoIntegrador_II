@@ -17,8 +17,17 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li className={styles.item}>
-            <Link to='/cliente'>Cliente</Link>
-            </li>
+            <Link to="/cliente">Cliente</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/servico">Serviço</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/produto">Produto</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/funcionario">Funcionário</Link>
+          </li>
         </ul>
       </Container>
     </nav>
