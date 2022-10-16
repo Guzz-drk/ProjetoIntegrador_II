@@ -1,5 +1,5 @@
 import styles from "../../components/css/Home.module.css";
-import agend from "../../components/img/web.svg";
+import agend from "../../components/img/Barber-amico.svg";
 function Home() {
   return (
     <section className={styles.home_container}>

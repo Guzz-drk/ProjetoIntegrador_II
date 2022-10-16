@@ -10,13 +10,15 @@ import TipoProduto from "./pages/tipoProduto/TipoProduto";
 import Servico from "./pages/servico/Servico";
 import Produto from "./pages/produto/Produto";
 import Funcionario from "./pages/funcionario/Funcionario";
+import Login from "./pages/login/Login";
 function App() {
   return (
     <Router>
       <Navbar />
       <Container customClass="min-height">
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/cliente" element={<Cliente />} />
           <Route path="/tipoServico" element={<TipoServico />} />
           <Route path="/tipoProduto" element={<TipoProduto />} />

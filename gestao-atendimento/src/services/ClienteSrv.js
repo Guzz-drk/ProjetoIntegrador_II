@@ -1,5 +1,4 @@
 import axios from "./axios-common";
-
 class ClienteSrv {
   url = "/cliente";
   async listar() {
