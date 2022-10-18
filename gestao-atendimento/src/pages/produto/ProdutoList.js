@@ -3,7 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import estilo from "../../components/css/List.module.css";
+import estilo from "../../components/css/ProdutoList.module.css";
 import { Link } from "react-router-dom";
 
 const template2 = {
@@ -73,7 +73,7 @@ const ServicoList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "45%" }}
+          style={{ marginLeft: "41%" }}
           className="p-button-rounded p-button-text"
           onClick={props.onClickAtualizar}
         ></Button>
@@ -83,7 +83,9 @@ const ServicoList = (props) => {
           className="p-button-rounded p-button-text"
           onClick={props.inserir}
         ></Button>
-        <Link to="/tipoProduto">Tipo Produto</Link>
+        <Button type="button" className="p-button-rounded p-button-text">
+          <Link to="/tipoProduto">Tipo Produto</Link>
+        </Button>
         <div className="card">
           <DataTable
             value={props.produtos}

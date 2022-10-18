@@ -73,7 +73,7 @@ const ServicoList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "45%" }}
+          style={{ marginLeft: "40%" }}
           className="p-button-rounded p-button-text"
           onClick={props.onClickAtualizar}
         ></Button>
@@ -83,7 +83,9 @@ const ServicoList = (props) => {
           className="p-button-rounded p-button-text"
           onClick={props.inserir}
         ></Button>
-        <Link to="/tipoServico">Tipo Servico</Link>
+        <Button type="button" className="p-button-rounded p-button-text">
+          <Link to="/tipoServico">Tipo Serviço</Link>
+        </Button>
         <div className="card">
           <DataTable
             value={props.servicos}

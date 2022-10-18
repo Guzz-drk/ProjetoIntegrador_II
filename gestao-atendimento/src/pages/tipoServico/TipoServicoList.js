@@ -3,7 +3,8 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import estilo from "../../components/css/List.module.css";
+import estilo from "../../components/css/ListTipoServico.module.css";
+import { Link } from "react-router-dom";
 const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
   RowsPerPageDropdown: (options) => {
@@ -71,7 +72,7 @@ const TipoServicoList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "45%" }}
+          style={{ marginLeft: "32%" }}
           className="p-button-rounded p-button-text"
           onClick={props.onClickAtualizar}
         ></Button>
@@ -81,6 +82,9 @@ const TipoServicoList = (props) => {
           className="p-button-rounded p-button-text"
           onClick={props.inserir}
         ></Button>
+        <Button type="button" className="p-button-rounded p-button-text">
+          <Link to="/servico">Voltar</Link>
+        </Button>
         <div className="card">
           <DataTable
             value={props.tipoServicos}
