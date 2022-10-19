@@ -61,7 +61,7 @@ function Servico() {
     idservico: null,
     descricao: "",
     obs: "",
-    valor: 0,
+    valor: "",
     categoria: "",
   };
   const [servico, setServico] = useState(initialState);

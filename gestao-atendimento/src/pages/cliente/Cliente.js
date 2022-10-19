@@ -96,46 +96,7 @@ function Cliente() {
         });
     }
   };
-  // const salvar = () => {
-  //   if (cliente.idcliente == null) {
-  //     ClienteSrv.incluir(cliente)
-  //       .then((response) => {
-  //         setEditando(false);
-  //         onClickAtualizar();
-  //         toastRef.current.show({
-  //           severity: "success",
-  //           summary: "Salvou",
-  //           life: 1000,
-  //         });
-  //       })
-  //       .catch((e) => {
-  //         toastRef.current.show({
-  //           severity: "error",
-  //           summary: e.message,
-  //           life: 1000,
-  //         });
-  //       });
-  //   } else {
-  //     // alteração
-  //     ClienteSrv.alterar(cliente)
-  //       .then((response) => {
-  //         setEditando(false);
-  //         onClickAtualizar();
-  //         toastRef.current.show({
-  //           severity: "success",
-  //           summary: "Salvou",
-  //           life: 1000,
-  //         });
-  //       })
-  //       .catch((e) => {
-  //         toastRef.current.show({
-  //           severity: "error",
-  //           summary: e.message,
-  //           life: 1000,
-  //         });
-  //       });
-  //   }
-  // };
+
   const cancelar = () => {
     setEditando(false);
   };

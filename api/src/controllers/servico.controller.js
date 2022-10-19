@@ -29,24 +29,24 @@ exports.listAllServico = async (req, res) => {
 
 // Método responsável por exibir um Servico pelo id
 exports.findServicoById = async (req, res) => {
-  const servicoId = parseInt(req.params.id);
+  const idServico = parseInt(req.params.id);
   const response = await db.query(
     "SELECT servico.*, tipoServico.descricao as categoria " +
       "from servico inner join tipoServico on servico.categoria = tipoServico.idTipoServico" +
       " WHERE idServico = $1",
-    [servicoId]
+    [idServico]
   );
   res.status(200).send(response.rows);
 };
 
 // Método responsável por atualizar um Servico pelo id
 exports.updateServicoById = async (req, res) => {
-  const servicoId = parseInt(req.params.id);
+  const idServico = parseInt(req.params.id);
   const { descricao, obs, valor, categoria } = req.body;
 
   const response = await db.query(
     "UPDATE servico SET descricao = $1, obs = $2, valor = $3, categoria = $4 WHERE idServico = $5",
-    [descricao, obs, valor, categoria, servicoId]
+    [descricao, obs, valor, categoria, idServico]
   );
 
   res.status(200).send({ message: "Servico Atualizado Com Sucesso!" });
@@ -54,8 +54,8 @@ exports.updateServicoById = async (req, res) => {
 
 // Método responsável por excluir um Servico pelo id
 exports.deleteServicoById = async (req, res) => {
-  const servicoId = parseInt(req.params.id);
-  await db.query("DELETE FROM servico WHERE idServico = $1", [servicoId]);
+  const idServico = parseInt(req.params.id);
+  await db.query("DELETE FROM servico WHERE idServico = $1", [idServico]);
 
-  res.status(200).send({ message: "Servico Excluido Com Sucesso!", servicoId });
+  res.status(200).send({ message: "Servico Excluido Com Sucesso!", idServico });
 };

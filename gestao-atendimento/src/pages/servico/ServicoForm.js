@@ -1,6 +1,5 @@
 import React from "react";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import estilo from "../../components/css/Form.module.css";
@@ -78,11 +77,7 @@ const ServicoForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="valor">
                       Valor
                     </label>
-                    <InputNumber
-                      inputId="locale-br"
-                      mode="decimal"
-                      locale="pt-BR"
-                      minFractionDigits={2}
+                    <InputText
                       name="valor"
                       defaultValue={props.servico.valor}
                       onChange={handleInputChange}
