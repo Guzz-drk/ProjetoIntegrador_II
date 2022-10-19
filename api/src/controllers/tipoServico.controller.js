@@ -27,22 +27,22 @@ exports.listAllTipoServico = async (req, res) => {
 
 // Método responsável por exibir um Tipo de Servico pelo id
 exports.findTipoServicoById = async (req, res) => {
-  const tipoServicoId = parseInt(req.params.id);
+  const idtiposervico = parseInt(req.params.id);
   const response = await db.query(
     "SELECT * FROM tipoServico WHERE idTipoServico = $1",
-    [tipoServicoId]
+    [idtiposervico]
   );
   res.status(200).send(response.rows);
 };
 
 // Método responsável por atualizar um Tipo de Servico pelo id
 exports.updateTipoServicoById = async (req, res) => {
-  const tipoServicoId = parseInt(req.params.id);
+  const idtiposervico = parseInt(req.params.id);
   const { descricao } = req.body;
 
   const response = await db.query(
     "UPDATE tipoServico SET descricao = $1 WHERE idTipoServico = $2",
-    [descricao, tipoServicoId]
+    [descricao, idtiposervico]
   );
 
   res.status(200).send({ message: "Tipo Servico Atualizado Com Sucesso!" });
@@ -50,12 +50,12 @@ exports.updateTipoServicoById = async (req, res) => {
 
 // Método responsável por excluir um Tipo de Servico pelo id
 exports.deleteTipoServicoById = async (req, res) => {
-  const tipoServicoId = parseInt(req.params.id);
+  const idtiposervico = parseInt(req.params.id);
   await db.query("DELETE FROM tipoServico WHERE idTipoServico = $1", [
-    tipoServicoId,
+    idtiposervico,
   ]);
 
   res
     .status(200)
-    .send({ message: "Tipo Servico Excluido Com Sucesso!", tipoServicoId });
+    .send({ message: "Tipo Servico Excluido Com Sucesso!", idtiposervico });
 };

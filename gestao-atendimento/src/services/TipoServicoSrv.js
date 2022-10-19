@@ -13,10 +13,12 @@ class TipoServicoSrv {
     });
   }
 
-  async alterar(data) {
-    return await axios.put(this.url, `/${data}`).catch((err) => {
-      throw err;
-    });
+  async alterar({ idtiposervico, ...data }) {
+    return await axios
+      .put(`${this.url}/${idtiposervico}`, { ...data })
+      .catch((err) => {
+        throw err;
+      });
   }
 
   async excluir(id) {
