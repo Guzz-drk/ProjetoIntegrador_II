@@ -11,7 +11,6 @@ import Servico from "./pages/servico/Servico";
 import Produto from "./pages/produto/Produto";
 import Funcionario from "./pages/funcionario/Funcionario";
 import Login from "./pages/login/Login";
-import Atendimento from "./pages/atendimento/Atendimento";
 function App() {
   return (
     <Router>
@@ -26,7 +25,6 @@ function App() {
           <Route path="/servico" element={<Servico />} />
           <Route path="/produto" element={<Produto />} />
           <Route path="/funcionario" element={<Funcionario />} />
-          <Route path="/atendimento" element={<Atendimento />} />
         </Routes>
       </Container>
       <Footer />

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
-// import { InputMask } from "primereact/inputmask";
+import { InputMask } from "primereact/inputmask";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import estilo from "../../components/css/Form.module.css";
@@ -10,6 +10,9 @@ const ClienteForm = (props) => {
     const { name, value } = event.target;
     props.setCliente({ ...props.cliente, [name]: value });
   };
+
+  const [cpfMask, setCpfMask] = useState(props.cliente.cpf);
+  const [telefoneMask, setTelefoneMask] = useState(props.cliente.telefone);
 
   const {
     register,
@@ -94,37 +97,18 @@ const ClienteForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="cpf">
                       CPF
                     </label>
-                    <InputText
+                    <InputMask
                       name="cpf"
-                      {...register("cpf", {
-                        required: {
-                          value: true,
-                          message: "O cpf é obrigatório!",
-                        },
-                        maxLength: {
-                          value: 100,
-                          message: "O cpf pode ter no máximo 100 caracteres!",
-                        },
-                        minLength: {
-                          value: 10,
-                          message: "O cpf deve ter no mínimo 10 caracteres!",
-                        },
-                      })}
-                      defaultValue={props.cliente.cpf}
-                      onChange={handleInputChange}
+                      mask="999.999.999-99"
+                      value={cpfMask}
+                      onChange={(e) => {
+                        setCpfMask(e.value);
+                        props.setCliente({ ...props.cliente, cpf: e.value });
+                      }}
                     />
                     {errors.cpf && (
                       <span style={{ color: "red" }}>{errors.cpf.message}</span>
                     )}
-                    {/* <InputMask
-                      name="cpf"
-                      defaultValue={props.cliente.cpf}
-                      onChange={handleInputChange}
-                      mask="999.999.999-99"
-                    />
-                    {errors.cpf && (
-                      <span style={{ color: "red" }}>{errors.cpf.message}</span>
-                    )} */}
                   </div>
                 </div>
               </div>
@@ -134,43 +118,23 @@ const ClienteForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="telefone">
                       Telefone
                     </label>
-                    <InputText
+                    <InputMask
                       name="telefone"
-                      {...register("telefone", {
-                        required: {
-                          value: true,
-                          message: "O telefone é obrigatório!",
-                        },
-                        maxLength: {
-                          value: 100,
-                          message:
-                            "O telefone pode ter no máximo 100 caracteres!",
-                        },
-                        minLength: {
-                          value: 10,
-                          message:
-                            "O telefone deve ter no mínimo 10 caracteres!",
-                        },
-                      })}
-                      defaultValue={props.cliente.telefone}
-                      onChange={handleInputChange}
+                      mask="(99) 99999-9999"
+                      value={telefoneMask}
+                      onChange={(e) => {
+                        setTelefoneMask(e.value);
+                        props.setCliente({
+                          ...props.cliente,
+                          telefone: e.value,
+                        });
+                      }}
                     />
                     {errors.telefone && (
                       <span style={{ color: "red" }}>
                         {errors.telefone.message}
                       </span>
                     )}
-                    {/* <InputMask
-                      name="telefone"
-                      defaultValue={props.cliente.telefone}
-                      onChange={handleInputChange}
-                      mask="(99) 99999-9999"
-                    />
-                    {errors.telefone && (
-                      <span style={{ color: "red" }}>
-                        {errors.telefone.message}
-                      </span>
-                    )} */}
                   </div>
                 </div>
               </div>

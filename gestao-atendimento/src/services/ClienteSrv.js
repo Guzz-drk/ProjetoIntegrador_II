@@ -11,10 +11,12 @@ class ClienteSrv {
       throw err;
     });
   }
-  async alterar(data) {
-    return await axios.put(this.url, data).catch((err) => {
-      throw err;
-    });
+  async alterar({ idcliente, ...data }) {
+    return await axios
+      .put(`${this.url}/${idcliente}`, { ...data })
+      .catch((err) => {
+        throw err;
+      });
   }
   async excluir(id) {
     return await axios.delete(`${this.url}/${id}`).catch((err) => {
