@@ -12,10 +12,12 @@ class TipoProdutoSrv {
       throw err;
     });
   }
-  async alterar(data) {
-    return await axios.put(this.url, data).catch((err) => {
-      throw err;
-    });
+  async alterar({ idtipoproduto, ...data }) {
+    return await axios
+      .put(`${this.url}/${idtipoproduto}`, { ...data })
+      .catch((err) => {
+        throw err;
+      });
   }
   async excluir(id) {
     return await axios.delete(`${this.url}/${id}`).catch((err) => {

@@ -27,22 +27,22 @@ exports.listAllTipoProduto = async (req, res) => {
 
 // Método responsável por exibir um Tipo de Produto pelo id
 exports.findTipoProdutoById = async (req, res) => {
-  const tipoProdutoId = parseInt(req.params.id);
+  const idtipoproduto = parseInt(req.params.id);
   const response = await db.query(
     "SELECT * FROM tipoProduto WHERE idTipoProduto = $1",
-    [tipoProdutoId]
+    [idtipoproduto]
   );
   res.status(200).send(response.rows);
 };
 
 // Método responsável por atualizar um Tipo de Produto pelo id
 exports.updateTipoProdutoById = async (req, res) => {
-  const tipoProdutoId = parseInt(req.params.id);
+  const idtipoproduto = parseInt(req.params.id);
   const { descricao } = req.body;
 
   const response = await db.query(
-    "UPDATE tipoProduto SET descricao = $1 WHERE idTipoProduto = $2",
-    [descricao, tipoProdutoId]
+    "UPDATE tipoProduto SET descricao = $1 WHERE idtipoproduto = $2",
+    [descricao, idtipoproduto]
   );
 
   res.status(200).send({ message: "Tipo Produto Atualizado Com Sucesso!" });
@@ -50,12 +50,12 @@ exports.updateTipoProdutoById = async (req, res) => {
 
 // Método responsável por excluir um Tipo de Produto pelo id
 exports.deleteTipoProdutoById = async (req, res) => {
-  const tipoProdutoId = parseInt(req.params.id);
+  const idtipoproduto = parseInt(req.params.id);
   await db.query("DELETE FROM tipoProduto WHERE idTipoProduto = $1", [
-    tipoProdutoId,
+    idtipoproduto,
   ]);
 
   res
     .status(200)
-    .send({ message: "Tipo Produto Excluido Com Sucesso!", tipoProdutoId });
+    .send({ message: "Tipo Produto Excluido Com Sucesso!", idtipoproduto });
 };
