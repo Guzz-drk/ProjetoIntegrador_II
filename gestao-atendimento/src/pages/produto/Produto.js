@@ -60,10 +60,10 @@ function Produto() {
   const initialState = {
     idproduto: null,
     descricao: "",
-    quantidade: 0,
-    valorcompra: 1,
-    valorvenda: 1,
-    categoria: 0,
+    quantidade: "",
+    valorcompra: "",
+    valorvenda: "",
+    categoria: "",
   };
   const [produto, setProduto] = useState(initialState);
   const [editando, setEditando] = useState(false);

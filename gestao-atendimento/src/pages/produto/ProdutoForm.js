@@ -1,6 +1,5 @@
 import React from "react";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from "primereact/inputnumber";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
 import estilo from "../../components/css/Form.module.css";
@@ -64,8 +63,7 @@ const ProdutoForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="quantidade">
                       Quantidade
                     </label>
-                    <InputNumber
-                      inputId="quantidade"
+                    <InputText
                       name="quantidade"
                       defaultValue={props.produto.quantidade}
                       onChange={handleInputChange}
@@ -82,7 +80,7 @@ const ProdutoForm = (props) => {
                     >
                       Valor de Compra
                     </label>
-                    <InputNumber
+                    <InputText
                       name="valorcompra"
                       defaultValue={props.produto.valorcompra}
                       onChange={handleInputChange}
@@ -96,7 +94,7 @@ const ProdutoForm = (props) => {
                     <label style={{ textAlign: "center" }} htmlFor="valorvenda">
                       Valor de Venda
                     </label>
-                    <InputNumber
+                    <InputText
                       name="valorvenda"
                       defaultValue={props.produto.valorvenda}
                       onChange={handleInputChange}
