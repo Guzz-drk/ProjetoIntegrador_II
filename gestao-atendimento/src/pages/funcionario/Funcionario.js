@@ -101,9 +101,11 @@ function Funcionario() {
     setEditando(false);
   };
 
-  const editar = (id) => {
+  const editar = (idfuncionario) => {
     setFuncionario(
-      funcionarios.filter((funcionario) => funcionario.idfuncionario === id)[0]
+      funcionarios.filter(
+        (funcionario) => funcionario.idfuncionario === idfuncionario
+      )[0]
     );
     setEditando(true);
   };

@@ -92,7 +92,7 @@ const ClienteList = (props) => {
             paginatorClassName="justify-content-center"
             className="mt-6"
           >
-            <Column field="idfuncaionario" header="ID" sortable></Column>
+            <Column field="idfuncionario" header="ID" sortable></Column>
             <Column field="nome" header="Nome" sortable filter></Column>
             <Column field="email" header="Email" sortable filter></Column>
             <Column field="telefone" header="Telefone" sortable filter></Column>

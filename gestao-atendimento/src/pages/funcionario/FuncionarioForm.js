@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { InputMask } from "primereact/inputmask";
 import { Button } from "primereact/button";
@@ -11,6 +11,8 @@ const FuncionarioForm = (props) => {
     props.setFuncionario({ ...props.funcionario, [name]: value });
   };
 
+  const [cpfMask, setCpfMask] = useState(props.funcionario.cpf);
+  const [telefoneMask, setTelefoneMask] = useState(props.funcionario.telefone);
   const {
     register,
     handleSubmit,
@@ -96,9 +98,15 @@ const FuncionarioForm = (props) => {
                     </label>
                     <InputMask
                       name="cpf"
-                      defaultValue={props.funcionario.cpf}
-                      onChange={handleInputChange}
                       mask="999.999.999-99"
+                      value={cpfMask}
+                      onChange={(e) => {
+                        setCpfMask(e.value);
+                        props.setFuncionario({
+                          ...props.funcionario,
+                          cpf: e.value,
+                        });
+                      }}
                     />
                     {errors.cpf && (
                       <span style={{ color: "red" }}>{errors.cpf.message}</span>
@@ -114,9 +122,15 @@ const FuncionarioForm = (props) => {
                     </label>
                     <InputMask
                       name="telefone"
-                      defaultValue={props.funcionario.telefone}
-                      onChange={handleInputChange}
                       mask="(99) 99999-9999"
+                      value={telefoneMask}
+                      onChange={(e) => {
+                        setTelefoneMask(e.value);
+                        props.setFuncionario({
+                          ...props.funcionario,
+                          telefone: e.value,
+                        });
+                      }}
                     />
                     {errors.telefone && (
                       <span style={{ color: "red" }}>
