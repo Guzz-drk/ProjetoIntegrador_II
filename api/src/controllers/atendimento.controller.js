@@ -3,16 +3,16 @@ const db = require("../config/database");
 // Método responsável por criar um novo Atendimento
 
 exports.createAtendimento = async (req, res) => {
-  const { dataHora, idServicoAtm, idClienteAtm, idFuncionarioAtm } = req.body;
+  const { datahora, idservicoatm, idclienteatm, idfuncionarioatm } = req.body;
   const { rows } = await db.query(
     "INSERT INTO atendimento (dataHora, idServicoAtm, idClienteAtm, idFuncionarioAtm) VALUES ($1, $2, $3, $4)",
-    [dataHora, idServicoAtm, idClienteAtm, idFuncionarioAtm]
+    [datahora, idservicoatm, idclienteatm, idfuncionarioatm]
   );
 
   res.status(201).send({
     message: "Atendimento Adicionado Com Sucesso!",
     body: {
-      Atendimento: { dataHora, idServicoAtm, idClienteAtm, idFuncionarioAtm },
+      Atendimento: { datahora, idservicoatm, idclienteatm, idfuncionarioatm },
     },
   });
 };
@@ -20,35 +20,35 @@ exports.createAtendimento = async (req, res) => {
 // Método responsável por listar todos os Atendimentos
 exports.listAllAtendimento = async (req, res) => {
   const response = await db.query(
-    "SELECT atendimento.dataHora, atendimento.idAtendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario " +
-      "from atendimento inner join servico on atendimento.idServicoAtm = servico.idServico " +
-      "inner join cliente on atendimento.idClienteAtm = cliente.idCliente " +
-      "inner join funcionario on atendimento.idFuncionarioAtm = funcionario.idFuncionario ORDER BY idAtendimento ASC"
+    "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario " +
+      "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
+      "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
+      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario ORDER BY idatendimento ASC"
   );
   res.status(200).send(response.rows);
 };
 
 // Método responsável por exibir um Atendimento pelo id
 exports.findAtendimentoById = async (req, res) => {
-  const atendimentoId = parseInt(req.params.id);
+  const idatendimento = parseInt(req.params.id);
   const response = await db.query(
-    "SELECT atendimento.dataHora, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario " +
-      "from atendimento inner join servico on atendimento.idServicoAtm = servico.idServico " +
-      "inner join cliente on atendimento.idClienteAtm = cliente.idCliente " +
-      "inner join funcionario on atendimento.idFuncionarioAtm = funcionario.idFuncionario WHERE idAtendimento = $1 ORDER BY idAtendimento ASC",
-    [atendimentoId]
+    "SELECT atendimento.datahora, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario " +
+      "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
+      "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
+      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario WHERE idatendimento = $1 ORDER BY idatendimento ASC",
+    [idatendimento]
   );
   res.status(200).send(response.rows);
 };
 
 // Método responsável por atualizar um Atendimento pelo id
 exports.updateAtendimentoById = async (req, res) => {
-  const atendimentoId = parseInt(req.params.id);
-  const { dataHora, idServicoAtm, idClienteAtm, idFuncionarioAtm } = req.body;
+  const idatendimento = parseInt(req.params.id);
+  const { datahora, idservicoatm, idclienteatm, idfuncionarioatm } = req.body;
 
   const response = await db.query(
-    "UPDATE atendimento SET dataHora = $1, idServicoAtm = $2, idClienteAtm = $3, idFuncionarioAtm = $4 WHERE idAtendimento = $5",
-    [dataHora, idServicoAtm, idClienteAtm, idFuncionarioAtm, atendimentoId]
+    "UPDATE atendimento SET datahora = $1, idservicoatm = $2, idclienteatm = $3, idfuncionarioatm = $4 WHERE idatendimento = $5",
+    [datahora, idservicoatm, idclienteatm, idfuncionarioatm, idatendimento]
   );
 
   res.status(200).send({ message: "Atendimento Atualizado Com Sucesso!" });
@@ -56,12 +56,12 @@ exports.updateAtendimentoById = async (req, res) => {
 
 // Método responsável por excluir um Atendimento pelo id
 exports.deleteAtendimentoById = async (req, res) => {
-  const atendimentoId = parseInt(req.params.id);
-  await db.query("DELETE FROM atendimento WHERE idAtendimento = $1", [
-    atendimentoId,
+  const idatendimento = parseInt(req.params.id);
+  await db.query("DELETE FROM atendimento WHERE idatendimento = $1", [
+    idatendimento,
   ]);
 
   res
     .status(200)
-    .send({ message: "Atendimento Excluido Com Sucesso!", atendimentoId });
+    .send({ message: "Atendimento Excluido Com Sucesso!", idatendimento });
 };

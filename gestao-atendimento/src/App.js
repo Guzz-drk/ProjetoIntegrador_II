@@ -11,6 +11,8 @@ import Servico from "./pages/servico/Servico";
 import Produto from "./pages/produto/Produto";
 import Funcionario from "./pages/funcionario/Funcionario";
 import Login from "./pages/login/Login";
+import Atendimento from "./pages/atendimento/Atendimento";
+import AtendimentoProduto from "./pages/atendimentoProduto/AtendimentoProduto";
 function App() {
   return (
     <Router>
@@ -25,6 +27,8 @@ function App() {
           <Route path="/servico" element={<Servico />} />
           <Route path="/produto" element={<Produto />} />
           <Route path="/funcionario" element={<Funcionario />} />
+          <Route path="/atendimento" element={<Atendimento />} />
+          <Route path="/atendimentoProduto" element={<AtendimentoProduto />} />
         </Routes>
       </Container>
       <Footer />

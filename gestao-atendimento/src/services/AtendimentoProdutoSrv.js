@@ -12,10 +12,12 @@ class AtendimentoProdutoSrv {
       throw err;
     });
   }
-  async alterar(data) {
-    return await axios.put(this.url, data).catch((err) => {
-      throw err;
-    });
+  async alterar({ idatendimentoprd, ...data }) {
+    return await axios
+      .put(`${this.url}/${idatendimentoprd}`, { ...data })
+      .catch((err) => {
+        throw err;
+      });
   }
   async excluir(id) {
     return await axios.delete(`${this.url}/${id}`).catch((err) => {

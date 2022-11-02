@@ -47,7 +47,7 @@ const template2 = {
   },
 };
 
-const ProdutoList = (props) => {
+const AtendimentoProdutoList = (props) => {
   const actionBodyTemplate = (rowData) => {
     return (
       <React.Fragment>
@@ -55,13 +55,13 @@ const ProdutoList = (props) => {
           type="button"
           icon="pi pi-pencil"
           className="p-button-rounded p-button-text"
-          onClick={() => props.editar(rowData.idproduto)}
+          onClick={() => props.editar(rowData.idatendimento)}
         ></Button>
         <Button
           type="button"
           icon="pi pi-trash"
           className="p-button-rounded p-button-text"
-          onClick={() => props.excluir(rowData.idproduto)}
+          onClick={() => props.excluir(rowData.idatendimento)}
         ></Button>
       </React.Fragment>
     );
@@ -69,7 +69,7 @@ const ProdutoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4}>Lista de Produtos</h4>
+        <h4 className={estilo.h4}>Atendimento-Produto</h4>
         <Button
           type="button"
           icon="pi pi-sync"
@@ -84,11 +84,11 @@ const ProdutoList = (props) => {
           onClick={props.inserir}
         ></Button>
         <Button type="button" className="p-button-rounded p-button-text">
-          <Link to="/tipoProduto">Tipo Produto</Link>
+          <Link to="/atendimento">Voltar</Link>
         </Button>
         <div className="card">
           <DataTable
-            value={props.produtos}
+            value={props.atendimentoProdutos}
             selectionMode="single"
             responsiveLayout="scroll"
             paginator
@@ -97,34 +97,16 @@ const ProdutoList = (props) => {
             paginatorClassName="justify-content-center"
             className="mt-6"
           >
-            <Column field="idproduto" header="ID" sortable></Column>
             <Column
-              field="descricao"
-              header="Descrição"
+              field="idatendimento"
+              header="Atendimento"
               sortable
               filter
             ></Column>
+            <Column field="produto" header="Produto" sortable filter></Column>
             <Column
               field="quantidade"
               header="Quantidade"
-              sortable
-              filter
-            ></Column>
-            <Column
-              field="valorcompra"
-              header="Valor de Compra"
-              sortable
-              filter
-            ></Column>
-            <Column
-              field="valorvenda"
-              header="Valor de Venda"
-              sortable
-              filter
-            ></Column>
-            <Column
-              field="categoria"
-              header="Categoria"
               sortable
               filter
             ></Column>
@@ -136,4 +118,4 @@ const ProdutoList = (props) => {
   );
 };
 
-export default ProdutoList;
+export default AtendimentoProdutoList;
