@@ -17,10 +17,26 @@ function AtendimentoProduto() {
   <Toast ref={toastRef} />;
 
   const [atendimentoProdutos, setAtendimentoProdutos] = useState([]);
-  const [produtos, setProdutos] = useState([]);
   const [atendimentos, setAtendimentos] = useState([]);
+  const [produtos, setProdutos] = useState([]);
   useEffect(() => {
     onClickAtualizar();
+    AtendimentoSrv.listar()
+      .then((response) => {
+        setAtendimentos(response.data);
+        toastRef.current.show({
+          severity: "success",
+          summary: "Atendimentos Atualizados",
+          life: 1000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
+      });
     ProdutoSrv.listar()
       .then((response) => {
         setProdutos(response.data);
@@ -37,14 +53,6 @@ function AtendimentoProduto() {
           life: 1000,
         });
       });
-    AtendimentoSrv.listar().then((response) => {
-      setAtendimentos(response.data);
-      toastRef.current.show({
-        severity: "success",
-        summary: "Atendimentos Atualizados",
-        life: 1000,
-      });
-    });
   }, []);
 
   const onClickAtualizar = () => {
@@ -53,7 +61,7 @@ function AtendimentoProduto() {
         setAtendimentoProdutos(response.data);
         toastRef.current.show({
           severity: "success",
-          summary: "Atendimento Produtos Atualizados",
+          summary: "Tipos de Produtos Atualizados",
           life: 1000,
         });
       })
@@ -69,9 +77,9 @@ function AtendimentoProduto() {
   // operação inserir
   const initialState = {
     idatendimentoprd: null,
-    idatendimentoatm: "",
-    idprodutoatmprd: "",
-    quantidadeproduto: "",
+    idatendimentoatm: null,
+    idprodutoatmprd: null,
+    quantidadeproduto: null,
   };
   const [atendimentoProduto, setAtendimentoProduto] = useState(initialState);
   const [editando, setEditando] = useState(false);

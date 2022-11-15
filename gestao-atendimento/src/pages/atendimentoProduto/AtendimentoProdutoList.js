@@ -53,15 +53,9 @@ const AtendimentoProdutoList = (props) => {
       <React.Fragment>
         <Button
           type="button"
-          icon="pi pi-pencil"
-          className="p-button-rounded p-button-text"
-          onClick={() => props.editar(rowData.idatendimento)}
-        ></Button>
-        <Button
-          type="button"
           icon="pi pi-trash"
           className="p-button-rounded p-button-text"
-          onClick={() => props.excluir(rowData.idatendimento)}
+          onClick={() => props.excluir(rowData.idatendimentoprd)}
         ></Button>
       </React.Fragment>
     );
@@ -98,19 +92,26 @@ const AtendimentoProdutoList = (props) => {
             className="mt-6"
           >
             <Column
-              field="idatendimento"
+              field="idatendimentoprd"
+              header="ID"
+              sortable
+              filter
+            ></Column>
+            <Column
+              field="atendimentocliente"
               header="Atendimento"
               sortable
               filter
             ></Column>
+            <Column field="cliente" header="Cliente" sortable filter></Column>
             <Column field="produto" header="Produto" sortable filter></Column>
             <Column
-              field="quantidade"
+              field="quantidadeproduto"
               header="Quantidade"
               sortable
               filter
             ></Column>
-            <Column header="Operações" body={actionBodyTemplate}></Column>
+            <Column header="Operação" body={actionBodyTemplate}></Column>
           </DataTable>
         </div>
       </div>
