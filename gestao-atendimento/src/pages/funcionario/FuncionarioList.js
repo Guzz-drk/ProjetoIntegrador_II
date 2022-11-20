@@ -52,13 +52,13 @@ const ClienteList = (props) => {
         <Button
           type="button"
           icon="pi pi-pencil"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.editar(rowData.idfuncionario)}
         ></Button>
         <Button
           type="button"
           icon="pi pi-trash"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idfuncionario)}
         ></Button>
       </React.Fragment>
@@ -72,13 +72,13 @@ const ClienteList = (props) => {
           type="button"
           icon="pi pi-sync"
           style={{ marginLeft: "44%" }}
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
           type="button"
           icon="pi pi-plus"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
         <div className="card">

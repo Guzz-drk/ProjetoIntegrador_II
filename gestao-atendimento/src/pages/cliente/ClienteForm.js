@@ -27,13 +27,11 @@ const ClienteForm = (props) => {
       <div className={estilo.div}>
         <div className={estilo.margemtopo}>
           <h5 className={estilo.top}>Cadastro de Clientes</h5>
-          <div style={{ textAlign: "center" }}>
+          <div>
             <div className={estilo.margemcampo}>
               <div className="p-fluid grid formgrid">
                 <div className="field col-12 md:col-12">
-                  <label style={{ textAlign: "center" }} htmlFor="nome">
-                    Nome
-                  </label>
+                  <label htmlFor="nome">Nome</label>
                   <InputText
                     name="nome"
                     {...register("nome", {
@@ -61,9 +59,7 @@ const ClienteForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label style={{ textAlign: "center" }} htmlFor="email">
-                      Email
-                    </label>
+                    <label htmlFor="email">Email</label>
                     <InputText
                       name="email"
                       {...register("email", {
@@ -94,9 +90,7 @@ const ClienteForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label style={{ textAlign: "center" }} htmlFor="cpf">
-                      CPF
-                    </label>
+                    <label htmlFor="cpf">CPF</label>
                     <InputMask
                       name="cpf"
                       mask="999.999.999-99"
@@ -115,9 +109,7 @@ const ClienteForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label style={{ textAlign: "center" }} htmlFor="telefone">
-                      Telefone
-                    </label>
+                    <label htmlFor="telefone">Telefone</label>
                     <InputMask
                       name="telefone"
                       mask="(99) 99999-9999"
@@ -145,14 +137,14 @@ const ClienteForm = (props) => {
               <Button
                 type="submit"
                 icon="pi pi-save"
-                className="p-button-rounded p-button-text "
+                className="p-button-raised p-button-rounded p-button-info"
                 label="Salvar"
                 onClick={props.salvar}
               ></Button>
               <Button
                 type="button"
                 icon="pi pi-times-circle"
-                className="p-button-rounded p-button-text"
+                className="p-button-raised p-button-rounded p-button-info"
                 label="Cancelar"
                 onClick={props.cancelar}
               ></Button>

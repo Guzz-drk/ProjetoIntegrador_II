@@ -53,13 +53,13 @@ const TipoProdutoList = (props) => {
         <Button
           type="button"
           icon="pi pi-pencil"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.editar(rowData.idtipoproduto)}
         ></Button>
         <Button
           type="button"
           icon="pi pi-trash"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idtipoproduto)}
         ></Button>
       </React.Fragment>
@@ -73,17 +73,22 @@ const TipoProdutoList = (props) => {
           type="button"
           icon="pi pi-sync"
           style={{ marginLeft: "33%" }}
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
           type="button"
           icon="pi pi-plus"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
-        <Button type="button" className="p-button-rounded p-button-text">
-          <Link to="/produto">Voltar</Link>
+        <Button
+          type="button"
+          className="p-button-raised p-button-rounded p-button-info"
+        >
+          <Link to="/produto" style={{ color: "white", fontFamily: "Hebbo" }}>
+            Voltar
+          </Link>
         </Button>
         <div className="card">
           <DataTable
@@ -94,7 +99,8 @@ const TipoProdutoList = (props) => {
             paginatorTemplate={template2}
             rows={5}
             paginatorClassName="justify-content-center"
-            className="mt-6"
+            className="mt-3"
+            style={{ fontFamily: "Hebbo" }}
           >
             <Column field="idtipoproduto" header="ID" sortable></Column>
             <Column field="descricao" header="Descrição" sortable></Column>

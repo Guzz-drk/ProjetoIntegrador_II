@@ -16,4 +16,10 @@ router.put("/funcionario/:id", funcionarioController.updateFuncionarioById);
 // Rota responsável por excluir um Funcionario pelo id
 router.delete("/funcionario/:id", funcionarioController.deleteFuncionarioById);
 
+//Rota responsável pelo Login
+router.post("/funcionario/login", funcionarioController.login);
+
+//Rota responsável pelo logout
+router.post("/funcionario/logout", funcionarioController.logout);
+
 module.exports = router;

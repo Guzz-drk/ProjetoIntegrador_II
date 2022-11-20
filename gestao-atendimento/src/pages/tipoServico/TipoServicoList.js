@@ -53,13 +53,13 @@ const TipoServicoList = (props) => {
         <Button
           type="button"
           icon="pi pi-pencil"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.editar(rowData.idtiposervico)}
         ></Button>
         <Button
           type="button"
           icon="pi pi-trash"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idtiposervico)}
         ></Button>
       </React.Fragment>
@@ -73,17 +73,22 @@ const TipoServicoList = (props) => {
           type="button"
           icon="pi pi-sync"
           style={{ marginLeft: "32%" }}
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
           type="button"
           icon="pi pi-plus"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
-        <Button type="button" className="p-button-rounded p-button-text">
-          <Link to="/servico">Voltar</Link>
+        <Button
+          type="button"
+          className="p-button-raised p-button-rounded p-button-info"
+        >
+          <Link to="/servico" style={{ color: "white", fontFamily: "Hebbo" }}>
+            Voltar
+          </Link>
         </Button>
         <div className="card">
           <DataTable
@@ -95,6 +100,7 @@ const TipoServicoList = (props) => {
             rows={5}
             paginatorClassName="justify-content-center"
             className="mt-6"
+            style={{ fontFamily: "Hebbo" }}
           >
             <Column field="idtiposervico" header="ID" sortable></Column>
             <Column field="descricao" header="Nome" sortable filter></Column>

@@ -1,5 +1,5 @@
 const db = require("../config/database");
-const ValidaCampoVazio = require("../validation/ValidaCampoVazio");
+const jwt = require("jsonwebtoken");
 // Método responsável por criar um novo Funcionario, e validação de campo vazio
 
 exports.createFuncionario = async (req, res) => {
@@ -58,4 +58,30 @@ exports.deleteFuncionarioById = async (req, res) => {
   res
     .status(200)
     .send({ message: "Funcionario Excluido Com Sucesso!", idfuncionario });
+};
+
+exports.login = async (req, res) => {
+  const { email, senha } = req.body;
+  const response = await db.query(
+    "SELECT email, senha FROM funcionario WHERE email = $1 AND senha = $2",
+    [email, senha]
+  );
+  if (!response.rows[0]) {
+    res.status(401).send({ message: "Email ou Senha inválidos!" });
+  } else {
+    const token = generateAuthToken(email, senha);
+    res.status(200).json({ token });
+  }
+};
+
+const generateAuthToken = function (email, senha) {
+  const token = jwt.sign({ email, senha }, process.env.JWT_PRIV_KEY, {
+    expiresIn: process.env.TOKEN_EXPIRE,
+  });
+
+  return token;
+};
+
+exports.logout = async (req, res) => {
+  res.status(200).send({ auth: false, token: null });
 };

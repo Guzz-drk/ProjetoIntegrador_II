@@ -54,13 +54,13 @@ const ServicoList = (props) => {
         <Button
           type="button"
           icon="pi pi-pencil"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.editar(rowData.idservico)}
         ></Button>
         <Button
           type="button"
           icon="pi pi-trash"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idservico)}
         ></Button>
       </React.Fragment>
@@ -73,18 +73,26 @@ const ServicoList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "40%" }}
-          className="p-button-rounded p-button-text"
+          style={{ marginLeft: "50vh" }}
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
           type="button"
           icon="pi pi-plus"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
-        <Button type="button" className="p-button-rounded p-button-text">
-          <Link to="/tipoServico">Tipo Serviço</Link>
+        <Button
+          type="button"
+          className="p-button-raised p-button-rounded p-button-info"
+        >
+          <Link
+            to="/tipoServico"
+            style={{ color: "white", fontFamily: "Hebbo" }}
+          >
+            Tipo Serviço
+          </Link>
         </Button>
         <div className="card">
           <DataTable
@@ -96,6 +104,7 @@ const ServicoList = (props) => {
             rows={5}
             paginatorClassName="justify-content-center"
             className="mt-6"
+            style={{ fontFamily: "Hebbo", marginLeft: "5vh" }}
           >
             <Column field="idservico" header="ID" sortable></Column>
             <Column

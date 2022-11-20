@@ -3,7 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import estilo from "../../components/css/ProdutoList.module.css";
+import estilo from "../../components/css/AtendimentoProdutoList.module.css";
 import { Link } from "react-router-dom";
 
 const template2 = {
@@ -54,7 +54,7 @@ const AtendimentoProdutoList = (props) => {
         <Button
           type="button"
           icon="pi pi-trash"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idatendimentoprd)}
         ></Button>
       </React.Fragment>
@@ -67,18 +67,23 @@ const AtendimentoProdutoList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "41%" }}
-          className="p-button-rounded p-button-text"
+          style={{ marginLeft: "50vh" }}
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
           type="button"
           icon="pi pi-plus"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
-        <Button type="button" className="p-button-rounded p-button-text">
-          <Link to="/atendimento">Voltar</Link>
+        <Button
+          type="button"
+          className="p-button-raised p-button-rounded p-button-info"
+        >
+          <Link to="/atendimento" style={{ color: "white" }}>
+            Voltar
+          </Link>
         </Button>
         <div className="card">
           <DataTable

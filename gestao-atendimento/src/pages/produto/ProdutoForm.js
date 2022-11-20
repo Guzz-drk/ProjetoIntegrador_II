@@ -28,9 +28,7 @@ const ProdutoForm = (props) => {
             <div className={estilo.margemcampo}>
               <div className="p-fluid grid formgrid">
                 <div className="field col-12 md:col-12">
-                  <label style={{ textAlign: "center" }} htmlFor="descricao">
-                    Descrição
-                  </label>
+                  <label htmlFor="descricao">Descrição</label>
                   <InputText
                     name="descricao"
                     {...register("descricao", {
@@ -60,9 +58,7 @@ const ProdutoForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label style={{ textAlign: "center" }} htmlFor="quantidade">
-                      Quantidade
-                    </label>
+                    <label htmlFor="quantidade">Quantidade</label>
                     <InputText
                       name="quantidade"
                       defaultValue={props.produto.quantidade}
@@ -74,12 +70,7 @@ const ProdutoForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label
-                      style={{ textAlign: "center" }}
-                      htmlFor="valorcompra"
-                    >
-                      Valor de Compra
-                    </label>
+                    <label htmlFor="valorcompra">Valor de Compra</label>
                     <InputText
                       name="valorcompra"
                       defaultValue={props.produto.valorcompra}
@@ -91,9 +82,7 @@ const ProdutoForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label style={{ textAlign: "center" }} htmlFor="valorvenda">
-                      Valor de Venda
-                    </label>
+                    <label htmlFor="valorvenda">Valor de Venda</label>
                     <InputText
                       name="valorvenda"
                       defaultValue={props.produto.valorvenda}
@@ -127,16 +116,17 @@ const ProdutoForm = (props) => {
               <Button
                 type="submit"
                 icon="pi pi-save"
-                className="p-button-rounded p-button-text "
+                className="p-button-raised p-button-rounded p-button-info"
                 label="Salvar"
                 onClick={props.salvar}
               ></Button>
               <Button
                 type="button"
                 icon="pi pi-times-circle"
-                className="p-button-rounded p-button-text"
+                className="p-button-raised p-button-rounded p-button-info"
                 label="Cancelar"
                 onClick={props.cancelar}
+                style={{ float: "right" }}
               ></Button>
             </div>
           </div>

@@ -23,13 +23,11 @@ const AtendimentoForm = (props) => {
       <div className={estilo.div}>
         <div className={estilo.margemtopo}>
           <h5 className={estilo.top}>Atendimentos</h5>
-          <div style={{ textAlign: "center" }}>
+          <div>
             <div className={estilo.margemcampo}>
               <div className="p-fluid grid formgrid">
                 <div className="field col-12 md:col-12">
-                  <label style={{ textAlign: "center" }} htmlFor="datahora">
-                    Data e Hora
-                  </label>
+                  <label htmlFor="datahora">Data e Hora</label>
                   <Calendar
                     name="datahora"
                     showTime
@@ -49,12 +47,7 @@ const AtendimentoForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label
-                      style={{ textAlign: "center" }}
-                      htmlFor="idservicoatm"
-                    >
-                      Serviço
-                    </label>
+                    <label htmlFor="idservicoatm">Serviço</label>
                     <Dropdown
                       name="idservicoatm"
                       value={props.atendimento.idservicoatm}
@@ -70,13 +63,8 @@ const AtendimentoForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label
-                      style={{ textAlign: "center" }}
-                      htmlFor="idclienteatm"
-                    >
-                      Cliente
-                    </label>
                     <label htmlFor="idclienteatm">Cliente</label>
+                    <label htmlFor="idclienteatm"></label>
                     <Dropdown
                       name="idclienteatm"
                       value={props.atendimento.idclienteatm}
@@ -92,12 +80,7 @@ const AtendimentoForm = (props) => {
               <div className="p-fluid grid formgrid">
                 <div className={estilo.margemcampo}>
                   <div className="field col-12 md:col-12">
-                    <label
-                      style={{ textAlign: "center" }}
-                      htmlFor="idfuncionarioatm"
-                    >
-                      Funcionário
-                    </label>
+                    <label htmlFor="idfuncionarioatm">Funcionário</label>
                     <Dropdown
                       name="idfuncionarioatm"
                       value={props.atendimento.idfuncionarioatm}
@@ -117,14 +100,14 @@ const AtendimentoForm = (props) => {
               <Button
                 type="submit"
                 icon="pi pi-save"
-                className="p-button-rounded p-button-text "
+                className="p-button-raised p-button-rounded p-button-info"
                 label="Salvar"
                 onClick={props.salvar}
               ></Button>
               <Button
                 type="button"
                 icon="pi pi-times-circle"
-                className="p-button-rounded p-button-text"
+                className="p-button-raised p-button-rounded p-button-info"
                 label="Cancelar"
                 onClick={props.cancelar}
               ></Button>

@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
 .h4 {
-    margin-top: 10px;
+    margin-top: 10vh;
     text-align: center;
+    margin-left: 5vh;
     font-weight: bold;
     font-family: 'Heebo', sans-serif;
 }
 
 .div {
-    margin-bottom: 75px;
+    margin-bottom: 30vh;
 }
 
 .botao {
@@ -22,6 +23,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-left: 250px;
+    margin-left: 33vh;
     margin: 0, auto;
+    font-family: 'Heebo', sans-serif;
 }

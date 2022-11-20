@@ -1,21 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
 .h4 {
-    margin-top: 10px;
     text-align: center;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Heebo', sans-serif;
+    margin-left: 6vh;
 }
 
 .div {
-    margin-left: 10em;
-    margin-bottom: 50px;
+    margin-left: 10vw;
+    margin-bottom: 20vh;
 }
 
 .botao {
-    margin-left: 10em;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-left: 10vw;
+    margin-top: 15vw;
+    margin-bottom: 15vw;
 }
 
 .main {
@@ -23,6 +23,5 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-left: 25px;
-    margin: 0, auto;
+    margin-left: 10vh;
 }

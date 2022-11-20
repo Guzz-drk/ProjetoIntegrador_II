@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
+.logo {
+    width: 55vw;
+    height: 35vh;
+    display: grid;
+    float: left;
+}
+
+.d {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 150vw;
+    float: inline-end;
+}
+
+.h {
+    font-family: 'Heebo', sans-serif;
+}

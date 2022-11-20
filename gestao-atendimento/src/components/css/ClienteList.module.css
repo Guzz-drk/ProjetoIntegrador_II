@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
 .h4 {
     margin-top: 10px;
     text-align: center;
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Heebo', sans-serif;
 }
 
 .div {
@@ -24,4 +24,5 @@
     height: 100vh;
     margin-left: 250px;
     margin: 0, auto;
+    font-family: 'Heebo', sans-serif;
 }

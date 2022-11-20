@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
 .home_container {
   width: 100%;
   display: flex;
@@ -10,16 +12,19 @@
 .home_container h1 {
   font-size: 2.5em;
   margin-bottom: 0.5em;
+  font-family: 'Heebo', sans-serif;
 }
 
 .home_container h1 span {
   color: #00376c;
   padding: 0 0.2em;
+  font-family: 'Heebo', sans-serif;
 }
 
 .home_container p {
   margin-bottom: 1.5em;
   color: #7b7b7b;
+  font-family: 'Heebo', sans-serif;
 }
 
 .home_container img {

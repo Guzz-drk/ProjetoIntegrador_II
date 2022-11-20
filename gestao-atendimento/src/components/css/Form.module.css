@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
+
 .div {
     margin: auto;
     align-items: center;
-    margin-left: 17em;
+    margin-left: 37vh;
 }
 
 .top {
@@ -12,7 +14,8 @@
 }
 
 .botao {
-    margin-left: 25px;
+    margin-left: 1vh;
+    margin-bottom: 2vh;
 }
 
 .margemtopo {
@@ -21,4 +24,10 @@
 
 .margemcampo {
     margin-top: 1.5em;
+}
+
+label {
+    text-align: center;
+    display: grid;
+    font-family: 'Heebo', sans-serif;
 }

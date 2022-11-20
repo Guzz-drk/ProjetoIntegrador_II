@@ -3,7 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
-import estilo from "../../components/css/ProdutoList.module.css";
+import estilo from "../../components/css/AtendimentoList.module.css";
 import { Link } from "react-router-dom";
 
 const template2 = {
@@ -64,13 +64,13 @@ const AtendimentoList = (props) => {
         <Button
           type="button"
           icon="pi pi-pencil"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.editar(rowData.idatendimento)}
         ></Button>
         <Button
           type="button"
           icon="pi pi-trash"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idatendimento)}
         ></Button>
       </React.Fragment>
@@ -83,18 +83,23 @@ const AtendimentoList = (props) => {
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "41%" }}
-          className="p-button-rounded p-button-text"
+          style={{ marginLeft: "44vh" }}
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
           type="button"
           icon="pi pi-plus"
-          className="p-button-rounded p-button-text"
+          className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
-        <Button type="button" className="p-button-rounded p-button-text">
-          <Link to="/atendimentoProduto">Atendimento-Produto</Link>
+        <Button
+          type="button"
+          className="p-button-raised p-button-rounded p-button-info"
+        >
+          <Link to="/atendimentoProduto" style={{ color: "white" }}>
+            Atendimento-Produto
+          </Link>
         </Button>
         <div className="card">
           <DataTable

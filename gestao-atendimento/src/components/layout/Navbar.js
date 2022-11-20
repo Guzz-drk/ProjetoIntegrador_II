@@ -9,12 +9,12 @@ function Navbar() {
   return (
     <nav className={styles.navbar}>
       <Container>
-        <Link to="/home">
+        <Link to="/">
           <img src={logo} alt="CleanCut"></img>
         </Link>
         <ul className={styles.list}>
           <li className={styles.item}>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className={styles.item}>
             <Link to="/cliente">Cliente</Link>
@@ -30,6 +30,9 @@ function Navbar() {
           </li>
           <li className={styles.item}>
             <Link to="/atendimento">Atendimento</Link>
+          </li>
+          <li className={styles.item}>
+            <Link to="/logout">Sair</Link>
           </li>
         </ul>
       </Container>
