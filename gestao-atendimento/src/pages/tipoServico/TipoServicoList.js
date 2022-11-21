@@ -57,6 +57,7 @@ const TipoServicoList = (props) => {
           onClick={() => props.editar(rowData.idtiposervico)}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-trash"
           className="p-button-raised p-button-rounded p-button-info"
@@ -68,7 +69,9 @@ const TipoServicoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4}>Lista de Tipos Serviços</h4>
+        <h4 className={estilo.h4} style={{ marginLeft: "2vh" }}>
+          Lista de Tipos Serviços
+        </h4>
         <Button
           type="button"
           icon="pi pi-sync"
@@ -77,12 +80,14 @@ const TipoServicoList = (props) => {
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-plus"
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           className="p-button-raised p-button-rounded p-button-info"
         >
@@ -90,6 +95,7 @@ const TipoServicoList = (props) => {
             Voltar
           </Link>
         </Button>
+        <p></p>
         <div className="card">
           <DataTable
             value={props.tipoServicos}

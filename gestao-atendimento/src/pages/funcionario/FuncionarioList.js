@@ -56,6 +56,7 @@ const ClienteList = (props) => {
           onClick={() => props.editar(rowData.idfuncionario)}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-trash"
           className="p-button-raised p-button-rounded p-button-info"
@@ -67,7 +68,9 @@ const ClienteList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4}>Lista de Funcionarios</h4>
+        <h4 className={estilo.h4} style={{ marginLeft: "2vh" }}>
+          Lista de Funcionários
+        </h4>
         <Button
           type="button"
           icon="pi pi-sync"
@@ -76,13 +79,16 @@ const ClienteList = (props) => {
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-plus"
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
+        <p></p>
         <div className="card">
           <DataTable
+            style={{ fontFamily: "Hebbo" }}
             value={props.funcionarios}
             selectionMode="single"
             responsiveLayout="scroll"

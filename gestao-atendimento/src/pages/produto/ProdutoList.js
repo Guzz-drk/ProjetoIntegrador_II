@@ -5,6 +5,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import estilo from "../../components/css/ProdutoList.module.css";
 import { Link } from "react-router-dom";
+import produtoPDF from "../relatorios/produto/produto";
 
 const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
@@ -58,6 +59,7 @@ const ProdutoList = (props) => {
           onClick={() => props.editar(rowData.idproduto)}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-trash"
           className="p-button-raised p-button-rounded p-button-info"
@@ -69,7 +71,9 @@ const ProdutoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4}>Lista de Produtos</h4>
+        <h4 className={estilo.h4} style={{ marginLeft: "3vh" }}>
+          Lista de Produtos
+        </h4>
         <Button
           type="button"
           icon="pi pi-sync"
@@ -78,19 +82,33 @@ const ProdutoList = (props) => {
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-plus"
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           className="p-button-raised p-button-rounded p-button-info"
         >
-          <Link to="/tipoProduto" style={{ color: "white" }}>
+          <Link
+            to="/tipoProduto"
+            style={{ color: "white", fontFamily: "Hebbo" }}
+          >
             Tipo Produto
           </Link>
         </Button>
+        <Button
+          type="button"
+          icon="pi pi-file-pdf"
+          className="p-button-raised p-button-rounded p-button-info"
+          onClick={(e) => produtoPDF(props.produtos)}
+          label="PDF"
+          style={{ float: "right", fontFamily: "Hebbo" }}
+        ></Button>
+        <p></p>
         <div className="card">
           <DataTable
             value={props.produtos}
@@ -101,6 +119,7 @@ const ProdutoList = (props) => {
             rows={5}
             paginatorClassName="justify-content-center"
             className="mt-6"
+            style={{ fontFamily: "Hebbo" }}
           >
             <Column field="idproduto" header="ID" sortable></Column>
             <Column

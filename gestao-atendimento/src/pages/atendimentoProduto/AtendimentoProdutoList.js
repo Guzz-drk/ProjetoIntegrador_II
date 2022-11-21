@@ -63,15 +63,18 @@ const AtendimentoProdutoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4}>Atendimento-Produto</h4>
+        <h4 className={estilo.h4} style={{ marginLeft: "1vh" }}>
+          Atendimento-Produto
+        </h4>
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "50vh" }}
+          style={{ marginLeft: "45vh" }}
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-plus"
           className="p-button-raised p-button-rounded p-button-info"
@@ -80,11 +83,16 @@ const AtendimentoProdutoList = (props) => {
         <Button
           type="button"
           className="p-button-raised p-button-rounded p-button-info"
+          style={{ marginLeft: "1vh" }}
         >
-          <Link to="/atendimento" style={{ color: "white" }}>
+          <Link
+            to="/atendimento"
+            style={{ color: "white", fontFamily: "Hebbo" }}
+          >
             Voltar
           </Link>
         </Button>
+        <p></p>
         <div className="card">
           <DataTable
             value={props.atendimentoProdutos}
@@ -95,6 +103,7 @@ const AtendimentoProdutoList = (props) => {
             rows={5}
             paginatorClassName="justify-content-center"
             className="mt-6"
+            style={{ fontFamily: "Hebbo" }}
           >
             <Column
               field="idatendimentoprd"

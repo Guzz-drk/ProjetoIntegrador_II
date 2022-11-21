@@ -4,6 +4,7 @@ import { Column } from "primereact/column";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import estilo from "../../components/css/ClienteList.module.css";
+import clientePDF from "../relatorios/cliente/cliente";
 const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
   RowsPerPageDropdown: (options) => {
@@ -56,6 +57,7 @@ const ClienteList = (props) => {
           onClick={() => props.editar(rowData.idcliente)}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-trash"
           className="p-button-raised p-button-rounded p-button-info"
@@ -67,7 +69,9 @@ const ClienteList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4}>Lista de Clientes</h4>
+        <h4 className={estilo.h4} style={{ marginLeft: "2vh" }}>
+          Lista de Clientes
+        </h4>
         <Button
           type="button"
           icon="pi pi-sync"
@@ -76,11 +80,21 @@ const ClienteList = (props) => {
           onClick={props.onClickAtualizar}
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-plus"
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
+        <Button
+          type="button"
+          icon="pi pi-file-pdf"
+          className="p-button-raised p-button-rounded p-button-info"
+          onClick={(e) => clientePDF(props.clientes)}
+          style={{ float: "right", fontFamily: "Hebbo" }}
+          label="PDF"
+        ></Button>
+        <p></p>
         <div className="card">
           <DataTable
             value={props.clientes}
