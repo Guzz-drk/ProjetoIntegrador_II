@@ -22,7 +22,7 @@ exports.findAtendimentoHoje = async (req, res) => {
     "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario, atendimento.status as status " +
       "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
       "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
-      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario  where cast(atendimento.datahora as date) = data and status = 'Aguardando'"
+      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario  where cast(atendimento.datahora as date) = current_date and status = 'Aguardando'"
   );
   res.status(200).send(response.rows);
 };
