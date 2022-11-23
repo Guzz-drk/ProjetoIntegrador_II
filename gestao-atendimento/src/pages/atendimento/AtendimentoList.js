@@ -6,6 +6,7 @@ import { Button } from "primereact/button";
 import estilo from "../../components/css/AtendimentoList.module.css";
 import { Link } from "react-router-dom";
 import atendimentoPDF from "../relatorios/atendimento/atendimento";
+
 const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
   RowsPerPageDropdown: (options) => {
@@ -80,13 +81,13 @@ const AtendimentoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4} style={{ marginLeft: "1vh" }}>
+        <h4 className={estilo.h4} style={{ marginLeft: "0vh" }}>
           Lista de Atendimentos
         </h4>
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "40vh" }}
+          style={{ marginLeft: "30vh" }}
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
@@ -109,6 +110,14 @@ const AtendimentoList = (props) => {
             Atendimento-Produto
           </Link>
         </Button>
+        <Button
+          style={{ marginLeft: "1vh" }}
+          type="button"
+          icon="pi pi-calendar"
+          className="p-button-raised p-button-rounded p-button-info"
+          onClick={props.onClickHoje}
+          label="Para Hoje"
+        ></Button>
         <Button
           type="button"
           icon="pi pi-file-pdf"
@@ -145,6 +154,7 @@ const AtendimentoList = (props) => {
               sortable
               filter
             ></Column>
+            <Column field="status" header="Status" sortable filter></Column>
             <Column header="Operações" body={actionBodyTemplate}></Column>
           </DataTable>
         </div>

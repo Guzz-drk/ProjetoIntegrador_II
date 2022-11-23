@@ -29,5 +29,11 @@ class AtendimentoSrv {
       throw err;
     });
   }
+
+  async listarHoje() {
+    return await axios.get(`${this.url}/hoje`).catch((err) => {
+      throw err;
+    });
+  }
 }
 export default new AtendimentoSrv();

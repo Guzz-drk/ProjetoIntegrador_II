@@ -76,6 +76,25 @@ function Atendimento() {
       });
   };
 
+  const onClickHoje = () => {
+    AtendimentoSrv.listarHoje()
+      .then((response) => {
+        setAtendimentos(response.data);
+        toastRef.current.show({
+          severity: "success",
+          summary: "Atendimentos Atualizados",
+          life: 1000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
+      });
+  };
+
   // operação inserir
   const initialState = {
     idatendimento: null,
@@ -183,6 +202,7 @@ function Atendimento() {
           inserir={inserir}
           editar={editar}
           excluir={excluir}
+          onClickHoje={onClickHoje}
         />
         <Toast ref={toastRef} />
       </div>

@@ -7,6 +7,8 @@ router.post("/atendimento", atendimentoController.createAtendimento);
 // Rota responsável por listar todos os Atendimentos
 router.get("/atendimento", atendimentoController.listAllAtendimento);
 
+router.get("/atendimento/hoje", atendimentoController.findAtendimentoHoje);
+
 // Rota responsável por exibir um Atendimento pelo id
 router.get("/atendimento/:id", atendimentoController.findAtendimentoById);
 

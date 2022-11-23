@@ -16,14 +16,25 @@ exports.createAtendimento = async (req, res) => {
     },
   });
 };
+//Método responsável por listar os atendimentos diarios.
+exports.findAtendimentoHoje = async (req, res) => {
+  const response = await db.query(
+    "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario, atendimento.status as status " +
+      "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
+      "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
+      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario  where cast(atendimento.datahora as date) = data and status = 'Aguardando'"
+  );
+  res.status(200).send(response.rows);
+};
 
 // Método responsável por listar todos os Atendimentos
 exports.listAllAtendimento = async (req, res) => {
   const response = await db.query(
-    "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario " +
+    "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario, atendimento.status as status " +
       "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
       "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
-      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario ORDER BY idatendimento ASC"
+      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario " +
+      "where status = 'Aguardando' ORDER BY idatendimento ASC"
   );
   res.status(200).send(response.rows);
 };
