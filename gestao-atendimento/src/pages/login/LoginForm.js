@@ -12,7 +12,11 @@ const LoginForm = (props) => {
     const { id, value } = event.target;
     setAcesso({ ...acesso, [id]: value });
   };
-  const { handleSubmit } = useForm();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
   const toastRef = useRef();
   const [acesso, setAcesso] = useState({
     email: "",
@@ -47,18 +51,52 @@ const LoginForm = (props) => {
           <InputText
             type="text"
             name="email"
+            {...register("email", {
+              required: {
+                value: true,
+                message: "O email é obrigatório",
+              },
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: "Email inválido",
+              },
+            })}
             id="email"
             value={acesso.email}
             onChange={handleInputChange}
           />
+          <p></p>
+          {errors.email && (
+            <span
+              className={estilo.error}
+              style={{ color: "red", fontFamily: "Hebbo", fontWeight: "bold" }}
+            >
+              {errors.email.message}
+            </span>
+          )}
           <br></br>
           <InputText
             type="password"
             name="senha"
+            {...register("senha", {
+              required: {
+                value: true,
+                message: "A senha é obrigatória",
+              },
+            })}
             id="senha"
             value={acesso.senha}
             onChange={handleInputChange}
           />
+          <p></p>
+          {errors.senha && (
+            <span
+              className={estilo.error}
+              style={{ color: "red", fontFamily: "Hebbo", fontWeight: "bold" }}
+            >
+              {errors.senha.message}
+            </span>
+          )}
           <br />
           <div>
             <Button
