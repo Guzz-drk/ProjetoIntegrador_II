@@ -27,6 +27,16 @@ exports.findAtendimentoHoje = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
+exports.findConcluido = async (req, res) => {
+  const response = await db.query(
+    "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario, atendimento.status as status " +
+      "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
+      "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
+      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario  where status = 'Concluido'"
+  );
+  res.status(200).send(response.rows);
+};
+
 // Método responsável por listar todos os Atendimentos
 exports.listAllAtendimento = async (req, res) => {
   const response = await db.query(
@@ -39,6 +49,15 @@ exports.listAllAtendimento = async (req, res) => {
   res.status(200).send(response.rows);
 };
 
+exports.updateStatus = async (req, res) => {
+  const id = parseInt(req.params.id);
+  const { status } = req.body;
+  const response = await db.query(
+    "UPDATE atendimento SET status = $1 WHERE idatendimento = $2",
+    [status, id]
+  );
+  res.status(200).send({ message: "Status Atualizado Com Sucesso!" });
+};
 // Método responsável por exibir um Atendimento pelo id
 exports.findAtendimentoById = async (req, res) => {
   const idatendimento = parseInt(req.params.id);

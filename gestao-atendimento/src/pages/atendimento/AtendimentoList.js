@@ -11,9 +11,8 @@ const template2 = {
   layout: "RowsPerPageDropdown CurrentPageReport PrevPageLink NextPageLink",
   RowsPerPageDropdown: (options) => {
     const dropdownOptions = [
-      { label: 5, value: 5 },
+      { label: 4, value: 4 },
       { label: 10, value: 10 },
-      { label: 15, value: 15 },
     ];
 
     return (
@@ -75,13 +74,20 @@ const AtendimentoList = (props) => {
           className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.excluir(rowData.idatendimento)}
         ></Button>
+        <Button
+          style={{ marginLeft: "1vh" }}
+          label="Confirmar"
+          icon="pi pi-check"
+          className="p-button-raised p-button-rounded p-button-info"
+          onClick={() => props.editarStatus(rowData.idatendimento)}
+        ></Button>
       </React.Fragment>
     );
   };
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4} style={{ marginLeft: "0vh" }}>
+        <h4 className={estilo.h4} style={{ marginLeft: "-5vh" }}>
           Lista de Atendimentos
         </h4>
         <Button
@@ -119,6 +125,14 @@ const AtendimentoList = (props) => {
           label="Para Hoje"
         ></Button>
         <Button
+          style={{ marginLeft: "1vh" }}
+          type="button"
+          icon="pi pi-calendar"
+          className="p-button-raised p-button-rounded p-button-info"
+          onClick={props.onClickConcluido}
+          label="Concluídos"
+        ></Button>
+        <Button
           type="button"
           icon="pi pi-file-pdf"
           className="p-button-raised p-button-rounded p-button-info"
@@ -137,7 +151,8 @@ const AtendimentoList = (props) => {
             paginatorTemplate={template2}
             rows={5}
             paginatorClassName="justify-content-center"
-            className="mt-6"
+            className="mt-12"
+            emptyMessage="Nenhum atendimento encontrado!!"
           >
             <Column field="idatendimento" header="ID" sortable></Column>
             <Column

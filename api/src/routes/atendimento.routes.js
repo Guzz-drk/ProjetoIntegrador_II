@@ -9,6 +9,9 @@ router.get("/atendimento", atendimentoController.listAllAtendimento);
 
 router.get("/atendimento/hoje", atendimentoController.findAtendimentoHoje);
 
+router.get("/atendimento/concluido", atendimentoController.findConcluido);
+
+router.put("/atendimento/:id", atendimentoController.updateStatus);
 // Rota responsável por exibir um Atendimento pelo id
 router.get("/atendimento/:id", atendimentoController.findAtendimentoById);
 

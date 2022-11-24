@@ -81,8 +81,8 @@ function Atendimento() {
       .then((response) => {
         setAtendimentos(response.data);
         toastRef.current.show({
-          severity: "success",
-          summary: "Atendimentos Atualizados",
+          severity: "info",
+          summary: "Atendimentos para Hoje Atualizados",
           life: 1000,
         });
       })
@@ -95,6 +95,24 @@ function Atendimento() {
       });
   };
 
+  const onClickConcluido = () => {
+    AtendimentoSrv.listarConcluido()
+      .then((response) => {
+        setAtendimentos(response.data);
+        toastRef.current.show({
+          severity: "info",
+          summary: "Atendimentos Concluídos Atualizados",
+          life: 1000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
+      });
+  };
   // operação inserir
   const initialState = {
     idatendimento: null,
@@ -163,6 +181,34 @@ function Atendimento() {
     setEditando(true);
   };
 
+  const editarStatus = (id) => {
+    let atend = {
+      idatendimento: id,
+      status: "Concluido",
+    };
+    AtendimentoSrv.alterarStatus(atend)
+      .then((response) => {
+        setEditando(false);
+        onClickAtualizar();
+        toastRef.current.show({
+          severity: "info",
+          summary: "Concluido",
+          life: 1000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 1000,
+        });
+      });
+  };
+  // setAtendimento(
+  //   atendimentos.filter((atendimento) => atendimento.idatendimento === id)[0]
+  // );
+  // setEditando(true);
+
   const excluir = (id) => {
     confirmDialog({
       message: "Confirma a exclusão?",
@@ -202,6 +248,8 @@ function Atendimento() {
           inserir={inserir}
           editar={editar}
           excluir={excluir}
+          editarStatus={editarStatus}
+          onClickConcluido={onClickConcluido}
           onClickHoje={onClickHoje}
         />
         <Toast ref={toastRef} />

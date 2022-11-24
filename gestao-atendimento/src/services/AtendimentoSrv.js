@@ -35,5 +35,19 @@ class AtendimentoSrv {
       throw err;
     });
   }
+
+  async alterarStatus({ idatendimento, ...data }) {
+    return await axios
+      .put(`${this.url}/${idatendimento}`, { ...data })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  async listarConcluido() {
+    return await axios.get(`${this.url}/concluido`).catch((err) => {
+      throw err;
+    });
+  }
 }
 export default new AtendimentoSrv();
