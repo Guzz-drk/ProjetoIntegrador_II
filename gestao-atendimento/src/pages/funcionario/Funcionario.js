@@ -71,8 +71,8 @@ function Funcionario() {
         })
         .catch((e) => {
           toastRef.current.show({
-            severity: "error",
-            summary: e.message,
+            severity: "warn",
+            summary: "Dados obrigatórios não preenchidos",
             life: 4000,
           });
         });

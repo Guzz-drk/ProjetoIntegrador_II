@@ -120,6 +120,7 @@ function Atendimento() {
     idservicoatm: "",
     idclienteatm: "",
     idfuncionarioatm: "",
+    valorTotal: "",
   };
   const [atendimento, setAtendimento] = useState(initialState);
   const [editando, setEditando] = useState(false);

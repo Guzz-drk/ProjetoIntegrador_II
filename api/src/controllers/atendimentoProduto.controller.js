@@ -4,9 +4,19 @@ const db = require("../config/database");
 
 exports.createAtendimentoProduto = async (req, res) => {
   const { idatendimentoatm, idprodutoatmprd, quantidadeproduto } = req.body;
+  const response = await db.query(
+    "select produto.descricao, produto.valorvenda from produto where idproduto = $1",
+    [idprodutoatmprd]
+  );
   const { rows } = await db.query(
-    "INSERT INTO atendimentoProduto (idatendimentoatm, idprodutoatmprd, quantidadeproduto) VALUES ($1, $2, $3)",
-    [idatendimentoatm, idprodutoatmprd, quantidadeproduto]
+    "INSERT INTO atendimentoProduto (idatendimentoatm, idprodutoatmprd, quantidadeproduto, prodnome, prodvalorvenda) VALUES ($1, $2, $3, $4, $5)",
+    [
+      idatendimentoatm,
+      idprodutoatmprd,
+      Number(quantidadeproduto),
+      response.rows[0].descricao,
+      response.rows[0].valorvenda,
+    ]
   );
 
   res.status(201).send({
@@ -24,23 +34,24 @@ exports.createAtendimentoProduto = async (req, res) => {
 // Método responsável por listar todos os AtendimentoProdutos
 exports.listAllAtendimentoProduto = async (req, res) => {
   const response = await db.query(
-    "SELECT atendimentoProduto.idatendimentoprd, atendimentoProduto.idatendimentoatm as atendimentoCliente, cliente.nome as cliente, produto.descricao as produto, " +
-      "atendimentoProduto.quantidadeproduto from atendimentoproduto " +
-      "inner join produto on atendimentoProduto.idprodutoatmprd = " +
-      "produto.idproduto inner join atendimento on atendimentoproduto.idatendimentoatm = atendimento.idatendimento " +
-      "inner join cliente on atendimento.idclienteatm = cliente.idcliente ORDER BY idAtendimento ASC"
+    "SELECT atendimentoProduto.idatendimentoprd, atendimentoProduto.idatendimentoatm as atendimentoCliente, " +
+      "cliente.nome as cliente, produto.descricao as produto, atendimentoProduto.quantidadeproduto, atendimentoProduto.prodvalorvenda as valor " +
+      "from atendimentoproduto inner join produto on atendimentoProduto.idprodutoatmprd = produto.idproduto inner join atendimento " +
+      "on atendimentoproduto.idatendimentoatm = atendimento.idatendimento inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
+      "where atendimentoProduto.idatendimentoatm = $1",
+    [req.params.id]
   );
   res.status(200).send(response.rows);
 };
 
 // Método responsável por exibir um AtendimentoProduto pelo id
 exports.findAtendimentoProdutoById = async (req, res) => {
-  const atendimentoProdutoId = parseInt(req.params.id);
+  const idatendimentoprd = parseInt(req.params.id);
   const response = await db.query(
-    "SELECT atendimentoProduto.idAtendimentoAtm as atendimento, produto.descricao as Produto " +
-      "from atendimentoProduto " +
-      "inner join produto on atendimentoProduto.idProdutoAtmPrd = produto.idProduto WHERE idAtendimentoAtm = $1",
-    [atendimentoProdutoId]
+    "select atendimentoproduto.quantidadeproduto, produto.descricao as produto from atendimentoproduto inner join produto " +
+      "on atendimentoproduto.idprodutoatmprd = produto.idproduto where idatendimentoprd = $1"[
+        idatendimentoprd
+      ]
   );
   res.status(200).send(response.rows);
 };

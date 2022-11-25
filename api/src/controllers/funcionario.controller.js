@@ -4,6 +4,11 @@ const jwt = require("jsonwebtoken");
 
 exports.createFuncionario = async (req, res) => {
   const { nome, cpf, email, telefone, senha } = req.body;
+  if (senha.length < 6) {
+    return res
+      .status(400)
+      .send({ message: "A senha deve ter no mínimo 6 caracteres" });
+  }
   const { rows } = await db.query(
     "INSERT INTO funcionario (nome, cpf, email, telefone, senha) VALUES ($1, $2, $3, $4, $5)",
     [nome, cpf, email, telefone, senha]

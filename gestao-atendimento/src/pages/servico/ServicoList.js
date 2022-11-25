@@ -120,7 +120,18 @@ const ServicoList = (props) => {
               filter
             ></Column>
             <Column field="obs" header="Observação" sortable filter></Column>
-            <Column field="valor" header="Valor" sortable filter></Column>
+            <Column
+              field="valor"
+              header="Valor"
+              body={(rowData) => {
+                return rowData.valor.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                });
+              }}
+              sortable
+              filter
+            ></Column>
             <Column
               field="categoria"
               header="Categoria"

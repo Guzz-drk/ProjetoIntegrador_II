@@ -75,6 +75,10 @@ const ClienteForm = (props) => {
                           value: 10,
                           message: "O nome deve ter no mínimo 10 caracteres!",
                         },
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: "O email deve ser válido!",
+                        },
                       })}
                       defaultValue={props.cliente.email}
                       onChange={handleInputChange}

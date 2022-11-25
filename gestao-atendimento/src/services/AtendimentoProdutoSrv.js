@@ -2,8 +2,8 @@ import axios from "./axios-common";
 
 class AtendimentoProdutoSrv {
   url = "/atendimentoProduto";
-  async listar() {
-    return await axios.get(this.url).catch((err) => {
+  async listar(id) {
+    return await axios.get(`atendimento/${id}${this.url}`).catch((err) => {
       throw err;
     });
   }

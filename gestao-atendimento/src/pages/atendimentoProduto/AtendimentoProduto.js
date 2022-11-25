@@ -11,6 +11,7 @@ import "primeicons/primeicons.css";
 
 import { Toast } from "primereact/toast";
 import { confirmDialog, ConfirmDialog } from "primereact/confirmdialog";
+import { useSearchParams } from "react-router-dom";
 
 function AtendimentoProduto() {
   const toastRef = useRef();
@@ -19,6 +20,7 @@ function AtendimentoProduto() {
   const [atendimentoProdutos, setAtendimentoProdutos] = useState([]);
   const [atendimentos, setAtendimentos] = useState([]);
   const [produtos, setProdutos] = useState([]);
+  const [URLSearchParams] = useSearchParams();
   useEffect(() => {
     onClickAtualizar();
     AtendimentoSrv.listar()
@@ -56,7 +58,8 @@ function AtendimentoProduto() {
   }, []);
 
   const onClickAtualizar = () => {
-    AtendimentoProdutoSrv.listar()
+    const id = URLSearchParams.get("id");
+    AtendimentoProdutoSrv.listar(id)
       .then((response) => {
         setAtendimentoProdutos(response.data);
         toastRef.current.show({
@@ -77,7 +80,7 @@ function AtendimentoProduto() {
   // operação inserir
   const initialState = {
     idatendimentoprd: null,
-    idatendimentoatm: null,
+    idatendimentoatm: Number(URLSearchParams.get("id")),
     idprodutoatmprd: null,
     quantidadeproduto: null,
   };

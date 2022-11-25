@@ -137,12 +137,24 @@ const ProdutoList = (props) => {
             <Column
               field="valorcompra"
               header="Valor de Compra"
+              body={(rowData) => {
+                return rowData.valorcompra.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                });
+              }}
               sortable
               filter
             ></Column>
             <Column
               field="valorvenda"
               header="Valor de Venda"
+              body={(rowData) => {
+                return rowData.valorvenda.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                });
+              }}
               sortable
               filter
             ></Column>

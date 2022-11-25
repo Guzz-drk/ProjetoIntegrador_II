@@ -39,14 +39,48 @@ exports.findConcluido = async (req, res) => {
 
 // Método responsável por listar todos os Atendimentos
 exports.listAllAtendimento = async (req, res) => {
+  let atendimentos = [];
   const response = await db.query(
-    "SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario, atendimento.status as status " +
-      "from atendimento inner join servico on atendimento.idservicoatm = servico.idservico " +
-      "inner join cliente on atendimento.idclienteatm = cliente.idcliente " +
-      "inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario " +
-      "where status = 'Aguardando' ORDER BY idatendimento ASC"
+    " SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario," +
+      " atendimento.status as status, atend.quantidadeproduto as quantidade, atend.prodvalorvenda" +
+      " from atendimento inner join servico on atendimento.idservicoatm = servico.idservico" +
+      " inner join cliente on atendimento.idclienteatm = cliente.idcliente" +
+      " inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario" +
+      " left join atendimentoproduto atend on atend.idatendimentoatm = atendimento.idatendimento" +
+      " where status = 'Aguardando' ORDER BY idatendimento ASC"
   );
-  res.status(200).send(response.rows);
+  atendimentos = response.rows.filter((atendimento, index, self) => {
+    return (
+      index ===
+      self.findIndex((t) => t.idatendimento === atendimento.idatendimento)
+    );
+  });
+  response.rows.forEach((item) => {
+    atendimentos.forEach((atendimento) => {
+      if (atendimento.idatendimento === item.idatendimento) {
+        if (!atendimento.itens) {
+          atendimento.itens = [];
+        }
+        atendimento.itens.push({
+          id: item.id,
+          prodvalorvenda: item.prodvalorvenda,
+          quantidadeproduto: item.quantidadeproduto,
+        });
+      }
+    });
+  });
+  atendimentos.forEach((atendimento, index) => {
+    atendimentos[index].valorTotal = atendimento.itens.reduce((a, b) => {
+      return a + b.prodvalorvenda * b.quantidadeproduto;
+    }, 0);
+  });
+  res.status(200).send(
+    atendimentos.map((atendimento) => ({
+      ...atendimento,
+      prodvalorvenda: undefined,
+      quantidadeproduto: undefined,
+    }))
+  );
 };
 
 exports.updateStatus = async (req, res) => {

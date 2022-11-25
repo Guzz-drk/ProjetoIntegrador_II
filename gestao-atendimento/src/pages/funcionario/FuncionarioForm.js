@@ -68,22 +68,25 @@ const FuncionarioForm = (props) => {
                       {...register("email", {
                         required: {
                           value: true,
-                          message: "O email é obrigatório!",
+                          message: "Email é obrigatório!",
                         },
-                        maxLength: {
-                          value: 100,
-                          message: "O email pode ter no máximo 100 caracteres!",
-                        },
-                        minLength: {
-                          value: 10,
-                          message: "O nome deve ter no mínimo 10 caracteres!",
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: "Email é inválido!",
                         },
                       })}
                       defaultValue={props.funcionario.email}
                       onChange={handleInputChange}
                     />
+                    <p></p>
                     {errors.email && (
-                      <span style={{ color: "red" }}>
+                      <span
+                        style={{
+                          color: "red",
+                          fontFamily: "Hebbo",
+                          fontWeight: "bold",
+                        }}
+                      >
                         {errors.email.message}
                       </span>
                     )}
@@ -151,22 +154,30 @@ const FuncionarioForm = (props) => {
                       {...register("senha", {
                         required: {
                           value: true,
-                          message: "O senha é obrigatório!",
+                          message: "Senha é obrigatória!",
                         },
                         maxLength: {
                           value: 100,
-                          message: "O senha pode ter no máximo 100 caracteres!",
+                          message: "Senha máxima de 100 caracteres!",
                         },
                         minLength: {
-                          value: 10,
-                          message: "O nome deve ter no mínimo 10 caracteres!",
+                          value: 6,
+                          message: "Senha mínima de 6 caracteres!",
                         },
                       })}
-                      defaultValue={props.funcionario.senha}
+                      type="password"
+                      value={props.funcionario.senha}
                       onChange={handleInputChange}
                     />
+                    <p></p>
                     {errors.senha && (
-                      <span style={{ color: "red" }}>
+                      <span
+                        style={{
+                          color: "red",
+                          fontFamily: "Hebbo",
+                          fontWeight: "bold ",
+                        }}
+                      >
                         {errors.senha.message}
                       </span>
                     )}

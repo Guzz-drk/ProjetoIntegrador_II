@@ -76,11 +76,24 @@ const AtendimentoList = (props) => {
         ></Button>
         <Button
           style={{ marginLeft: "1vh" }}
-          label="Confirmar"
           icon="pi pi-check"
           className="p-button-raised p-button-rounded p-button-info"
           onClick={() => props.editarStatus(rowData.idatendimento)}
         ></Button>
+        <Button
+          style={{
+            marginLeft: "1vh",
+          }}
+          type="button"
+          className="p-button-raised p-button-rounded p-button-info"
+        >
+          <Link
+            to={`/atendimentoProduto?id=${rowData.idatendimento}`}
+            style={{ color: "white", fontFamily: "Hebbo" }}
+          >
+            Produtos
+          </Link>
+        </Button>
       </React.Fragment>
     );
   };
@@ -104,18 +117,6 @@ const AtendimentoList = (props) => {
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.inserir}
         ></Button>
-        <Button
-          style={{ marginLeft: "1vh" }}
-          type="button"
-          className="p-button-raised p-button-rounded p-button-info"
-        >
-          <Link
-            to="/atendimentoProduto"
-            style={{ color: "white", fontFamily: "Hebbo" }}
-          >
-            Atendimento-Produto
-          </Link>
-        </Button>
         <Button
           style={{ marginLeft: "1vh" }}
           type="button"

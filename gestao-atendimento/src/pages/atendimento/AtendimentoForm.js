@@ -18,8 +18,6 @@ const AtendimentoForm = (props) => {
 
   const onSubmit = (data) => {};
 
-  const StatusSelect = ["Concluido", "Aguardando"];
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={estilo.div}>
       <div className={estilo.div}>
@@ -90,19 +88,6 @@ const AtendimentoForm = (props) => {
                       optionValue="idfuncionario"
                       onChange={handleInputChange}
                       placeholder="Selecione o Funcionário"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="p-fluid grid formgrid">
-                <div className={estilo.margemcampo}>
-                  <div className="field col-12 md:col-12">
-                    <label htmlFor="status">Status</label>
-                    <Dropdown
-                      name="status"
-                      value={props.atendimento.status}
-                      options={StatusSelect}
-                      onChange={handleInputChange}
                     />
                   </div>
                 </div>

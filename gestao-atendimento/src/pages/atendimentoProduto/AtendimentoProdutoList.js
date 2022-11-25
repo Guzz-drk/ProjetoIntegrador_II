@@ -104,6 +104,7 @@ const AtendimentoProdutoList = (props) => {
             paginatorClassName="justify-content-center"
             className="mt-6"
             style={{ fontFamily: "Hebbo" }}
+            emptyMessage="Nenhum registro encontrado"
           >
             <Column
               field="idatendimentoprd"
@@ -125,6 +126,7 @@ const AtendimentoProdutoList = (props) => {
               sortable
               filter
             ></Column>
+            <Column field="valor" header="Valor" sortable filter></Column>
             <Column header="Operação" body={actionBodyTemplate}></Column>
           </DataTable>
         </div>
