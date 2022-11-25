@@ -61,6 +61,7 @@ function Atendimento() {
     AtendimentoSrv.listar()
       .then((response) => {
         setAtendimentos(response.data);
+        console.log(response.data);
         toastRef.current.show({
           severity: "success",
           summary: "Atendimentos Atualizados",
@@ -120,7 +121,6 @@ function Atendimento() {
     idservicoatm: "",
     idclienteatm: "",
     idfuncionarioatm: "",
-    valorTotal: "",
   };
   const [atendimento, setAtendimento] = useState(initialState);
   const [editando, setEditando] = useState(false);

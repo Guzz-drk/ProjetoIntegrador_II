@@ -126,7 +126,18 @@ const AtendimentoProdutoList = (props) => {
               sortable
               filter
             ></Column>
-            <Column field="valor" header="Valor" sortable filter></Column>
+            <Column
+              body={(rowData) => {
+                return rowData.valor.toLocaleString("pt-br", {
+                  style: "currency",
+                  currency: "BRL",
+                });
+              }}
+              field="valor"
+              header="Valor"
+              sortable
+              filter
+            ></Column>
             <Column header="Operação" body={actionBodyTemplate}></Column>
           </DataTable>
         </div>

@@ -171,6 +171,12 @@ const AtendimentoList = (props) => {
               filter
             ></Column>
             <Column field="status" header="Status" sortable filter></Column>
+            <Column
+              field="valortotal"
+              header="R$Produtos"
+              sortable
+              filter
+            ></Column>
             <Column header="Operações" body={actionBodyTemplate}></Column>
           </DataTable>
         </div>
