@@ -63,13 +63,13 @@ const AtendimentoProdutoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4} style={{ marginLeft: "1vh" }}>
+        <h4 className={estilo.h4} style={{ marginRight: "3vh" }}>
           Atendimento-Produto
         </h4>
         <Button
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "45vh" }}
+          style={{ marginLeft: "50vh" }}
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>

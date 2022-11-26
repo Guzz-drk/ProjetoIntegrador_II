@@ -3,7 +3,6 @@
 .h4 {
     margin-top: 10vh;
     text-align: center;
-    margin-left: 5vh;
     font-weight: bold;
     font-family: 'Heebo', sans-serif;
 }
@@ -12,18 +11,12 @@
     margin-bottom: 30vh;
 }
 
-.botao {
-    margin-left: 10em;
-    margin-top: 15px;
-    margin-bottom: 15px;
-}
-
 .main {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-left: 33vh;
+    margin-left: 25vh;
     margin: 0, auto;
     font-family: 'Heebo', sans-serif;
 }

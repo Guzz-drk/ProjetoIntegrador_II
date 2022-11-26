@@ -95,7 +95,7 @@ const AtendimentoList = (props) => {
             to={`/atendimentoProduto?id=${rowData.idatendimento}`}
             style={{ color: "white", fontFamily: "Hebbo" }}
           >
-            Produtos
+            Itens
           </Link>
         </Button>
       </React.Fragment>
@@ -110,7 +110,7 @@ const AtendimentoList = (props) => {
         <Button
           style={{
             display: "inline-flex",
-            marginLeft: "65vh",
+            marginLeft: "60vh",
           }}
           type="button"
           icon="pi pi-sync"
@@ -181,7 +181,7 @@ const AtendimentoList = (props) => {
             <Column
               body={currencyBrl}
               field="valortotal"
-              header="R$Produtos"
+              header="Produtos"
               sortable
               filter
             ></Column>

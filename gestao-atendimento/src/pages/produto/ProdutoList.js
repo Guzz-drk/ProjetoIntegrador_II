@@ -159,7 +159,7 @@ const ProdutoList = (props) => {
               filter
             ></Column>
             <Column
-              field="categoria"
+              field="tipoproduto"
               header="Categoria"
               sortable
               filter
