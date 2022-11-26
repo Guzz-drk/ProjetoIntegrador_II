@@ -20,7 +20,7 @@ exports.createServico = async (req, res) => {
 // Método responsável por listar todos os Servicos
 exports.listAllServico = async (req, res) => {
   const response = await db.query(
-    "SELECT servico.*, tipoServico.descricao as categoria " +
+    "SELECT servico.idservico, servico.descricao, servico.obs, servico.valor, servico.categoria, tipoServico.descricao as tiposervico " +
       "from servico inner join tipoServico on servico.categoria = tipoServico.idTipoServico" +
       " ORDER BY descricao ASC"
   );

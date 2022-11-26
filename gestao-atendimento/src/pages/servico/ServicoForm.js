@@ -89,14 +89,19 @@ const ServicoForm = (props) => {
                 <div className={estilo.margemcampo}>
                   <div className="p-fluid grid formgrid">
                     <div className="field col-12 md:col-12">
-                      <label htmlFor="categoria">Tipo de Serviço</label>
+                      <label htmlFor="tiposervico">Tipo de Serviço</label>
                       <Dropdown
-                        name="categoria"
+                        name="tiposervico"
                         value={props.servico.categoria}
                         options={props.tipoServicos}
                         optionLabel="descricao"
                         optionValue="idtiposervico"
-                        onChange={handleInputChange}
+                        onChange={(handleInputChange) =>
+                          props.setServico({
+                            ...props.servico,
+                            categoria: handleInputChange.value,
+                          })
+                        }
                         placeholder="Selecione o Tipo de Serviço"
                       />
                     </div>

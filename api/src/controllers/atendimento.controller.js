@@ -43,8 +43,8 @@ exports.listAllAtendimento = async (req, res) => {
   const response = await db.query(
     " SELECT atendimento.datahora, atendimento.idatendimento, servico.descricao as servico, cliente.nome as cliente, funcionario.nome as funcionario," +
       " atendimento.status as status, atend.quantidadeproduto as quantidade, atend.prodvalorvenda, " +
-      " (select sum(quantidadeproduto * prodvalorvenda) from atendimentoproduto where idatendimentoatm = atendimento.idatendimento) as valorTotal" +
-      " from atendimento inner join servico on atendimento.idservicoatm = servico.idservico" +
+      " (select sum(quantidadeproduto * prodvalorvenda) from atendimentoproduto where idatendimentoatm = atendimento.idatendimento) as valorTotal," +
+      " atendimento.idclienteatm, atendimento.idservicoatm, atendimento.idfuncionarioatm from atendimento inner join servico on atendimento.idservicoatm = servico.idservico" +
       " inner join cliente on atendimento.idclienteatm = cliente.idcliente" +
       " inner join funcionario on atendimento.idfuncionarioatm = funcionario.idfuncionario" +
       " left join atendimentoproduto atend on atend.idatendimentoatm = atendimento.idatendimento" +

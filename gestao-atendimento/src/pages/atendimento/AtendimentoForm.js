@@ -32,10 +32,10 @@ const AtendimentoForm = (props) => {
                     name="datahora"
                     showTime
                     showIcon
+                    onChange={handleInputChange}
                     dateFormat="dd/mm/yy"
                     hourFormat="24"
-                    defaultValue={props.atendimento.datahora}
-                    onChange={handleInputChange}
+                    value={props.atendimento.datahora}
                   />
                   {errors.datahora && (
                     <span style={{ color: "red" }}>
@@ -52,9 +52,14 @@ const AtendimentoForm = (props) => {
                       name="idservicoatm"
                       value={props.atendimento.idservicoatm}
                       options={props.servicos}
+                      onChange={(handleInputChange) =>
+                        props.setAtendimento((atendimento) => ({
+                          ...atendimento,
+                          idservicoatm: handleInputChange.value,
+                        }))
+                      }
                       optionLabel="descricao"
                       optionValue="idservico"
-                      onChange={handleInputChange}
                       placeholder="Selecione o Serviço"
                     />
                   </div>
@@ -68,9 +73,14 @@ const AtendimentoForm = (props) => {
                       name="idclienteatm"
                       value={props.atendimento.idclienteatm}
                       options={props.clientes}
+                      onChange={(handleInputChange) =>
+                        props.setAtendimento((atendimento) => ({
+                          ...atendimento,
+                          idclienteatm: handleInputChange.value,
+                        }))
+                      }
                       optionLabel="nome"
                       optionValue="idcliente"
-                      onChange={handleInputChange}
                       placeholder="Selecione o Cliente"
                     />
                   </div>
@@ -84,9 +94,14 @@ const AtendimentoForm = (props) => {
                       name="idfuncionarioatm"
                       value={props.atendimento.idfuncionarioatm}
                       options={props.funcionarios}
+                      onChange={(handleInputChange) =>
+                        props.setAtendimento((atendimento) => ({
+                          ...atendimento,
+                          idfuncionarioatm: handleInputChange.value,
+                        }))
+                      }
                       optionLabel="nome"
                       optionValue="idfuncionario"
-                      onChange={handleInputChange}
                       placeholder="Selecione o Funcionário"
                     />
                   </div>

@@ -20,7 +20,7 @@ exports.createProduto = async (req, res) => {
 // Método responsável por listar todos os Produtos
 exports.listAllProduto = async (req, res) => {
   const response = await db.query(
-    "SELECT produto.*, tipoProduto.descricao as categoria" +
+    "SELECT produto.idproduto, produto.descricao, produto.quantidade, produto.valorcompra, produto.valorvenda, produto.categoria, tipoProduto.descricao as tipoproduto" +
       " from produto inner join tipoProduto on produto.categoria = tipoProduto.idTipoProduto" +
       " ORDER BY descricao ASC"
   );

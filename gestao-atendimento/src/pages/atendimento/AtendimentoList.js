@@ -58,6 +58,12 @@ const dateBodyTemplate = (rowData) => {
 };
 
 const AtendimentoList = (props) => {
+  const currencyBrl = (rowData) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(rowData.valortotal);
+  };
   const actionBodyTemplate = (rowData) => {
     return (
       <React.Fragment>
@@ -81,9 +87,7 @@ const AtendimentoList = (props) => {
           onClick={() => props.editarStatus(rowData.idatendimento)}
         ></Button>
         <Button
-          style={{
-            marginLeft: "1vh",
-          }}
+          style={{ marginLeft: "1vh" }}
           type="button"
           className="p-button-raised p-button-rounded p-button-info"
         >
@@ -100,13 +104,16 @@ const AtendimentoList = (props) => {
   return (
     <div className={estilo.main}>
       <div className={estilo.div}>
-        <h4 className={estilo.h4} style={{ marginLeft: "-5vh" }}>
+        <h4 className={estilo.h4} style={{ marginLeft: "5vh" }}>
           Lista de Atendimentos
         </h4>
         <Button
+          style={{
+            display: "inline-flex",
+            marginLeft: "65vh",
+          }}
           type="button"
           icon="pi pi-sync"
-          style={{ marginLeft: "30vh" }}
           className="p-button-raised p-button-rounded p-button-info"
           onClick={props.onClickAtualizar}
         ></Button>
@@ -158,7 +165,7 @@ const AtendimentoList = (props) => {
             <Column field="idatendimento" header="ID" sortable></Column>
             <Column
               body={dateBodyTemplate}
-              header="Data e Hora"
+              header="Data/Hora"
               sortable
               filter
             ></Column>
@@ -172,6 +179,7 @@ const AtendimentoList = (props) => {
             ></Column>
             <Column field="status" header="Status" sortable filter></Column>
             <Column
+              body={currencyBrl}
               field="valortotal"
               header="R$Produtos"
               sortable

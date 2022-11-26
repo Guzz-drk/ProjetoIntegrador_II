@@ -133,7 +133,7 @@ const ServicoList = (props) => {
               filter
             ></Column>
             <Column
-              field="categoria"
+              field="tiposervico"
               header="Categoria"
               sortable
               filter

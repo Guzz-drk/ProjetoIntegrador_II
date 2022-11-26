@@ -95,14 +95,19 @@ const ProdutoForm = (props) => {
                 <div className={estilo.margemcampo}>
                   <div className="p-fluid grid formgrid">
                     <div className="field col-12 md:col-12">
-                      <label htmlFor="categoria">Tipo de Produto</label>
+                      <label htmlFor="tipoproduto">Tipo de Produto</label>
                       <Dropdown
-                        name="categoria"
+                        name="tipoproduto"
                         value={props.produto.categoria}
                         options={props.tipoProdutos}
                         optionLabel="descricao"
                         optionValue="idtipoproduto"
-                        onChange={handleInputChange}
+                        onChange={(handleInputChange) =>
+                          props.setProduto((produto) => ({
+                            ...produto,
+                            categoria: handleInputChange.value,
+                          }))
+                        }
                         placeholder="Selecione o Tipo de Produto"
                       />
                     </div>
