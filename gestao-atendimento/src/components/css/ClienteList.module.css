@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo&display=swap');
 
 .h4 {
-    margin-top: 10px;
+    text-align: center;
+    margin-top: 10vh;
     text-align: center;
     font-weight: bold;
     font-family: 'Heebo', sans-serif;
@@ -24,5 +25,7 @@
     height: 100vh;
     margin-left: 250px;
     margin: 0, auto;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     font-family: 'Heebo', sans-serif;
 }

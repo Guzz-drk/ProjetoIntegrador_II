@@ -18,5 +18,7 @@
     height: 100vh;
     margin-left: 25vh;
     margin: 0, auto;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
     font-family: 'Heebo', sans-serif;
 }
