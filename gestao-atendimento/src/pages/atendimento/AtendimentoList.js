@@ -68,12 +68,6 @@ const AtendimentoList = (props) => {
     return (
       <React.Fragment>
         <Button
-          type="button"
-          icon="pi pi-pencil"
-          className="p-button-raised p-button-rounded p-button-info"
-          onClick={() => props.editar(rowData.idatendimento)}
-        ></Button>
-        <Button
           style={{ marginLeft: "1vh" }}
           type="button"
           icon="pi pi-trash"
