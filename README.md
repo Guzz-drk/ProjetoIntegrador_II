@@ -12,8 +12,8 @@ https://drive.google.com/drive/folders/1igDrisXqdw_wPqUN851LFQ7ibdIGZKX7?usp=sha
 
 ### Casos de Uso
 
-<img src="./gestao-atendimento/src/components/markdown/UseCasePI2.png" style="height:500px; width:700px;"/>
+<img src="./gestao-atendimento/src/components/markdown/UseCasePI2.png" style="height:500px; width:600px;"/>
 
 ### Diagrama de Classe
 
-<img src="./gestao-atendimento/src/components/markdown/DiagramaClassePI2.png" style="height: 500px; width:700px;"/>
+<img src="./gestao-atendimento/src/components/markdown/DiagramaClassePI2.png" style="height: 500px; width:550px;"/>
